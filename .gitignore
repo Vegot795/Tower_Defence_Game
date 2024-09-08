@@ -1,32 +1,106 @@
-# Prerequisites
-*.d
+# This .gitignore file is for Unity projects using C#
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
+# Ignore system generated files
+.DS_Store
+Thumbs.db
+
+# Ignore project-specific files
+/*.csproj
+/*.sln
+/*.user
+/*.unityproj
+/*.pidb
+/*.booproj
+/*.suo
+
+# Unity generated files
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Mm]emoryCaptures/
+
+# Asset meta data should only be shared if part of the project
+/[Aa]ssets/**/*.meta
+
+# Auto-generated files in project root
+/[Aa]ssets/AssetStoreTools*
+/exportedObj/
+/UserSettings/
+
+# Ignore build results
+/[Bb]uild/
+/[Bb]uilds/
+/[Tt]estResults/
+
+# Crashlytics generated file
+/Assets/Plugins/Android/com.crashlytics*
+
+# Visual Studio files
+.vscode/
+/.vs/
+/.vscode/settings.json
+
+# Unity auto-generated files
+/[Uu]serSettings/
+/Logs/
+/Packages/manifest.json
+/[Pp]ackages/packages-lock.json
+
+# JetBrains Rider & IntelliJ-based IDEs
+.idea/
+.idea/workspace.xml
+.idea/gradle.xml
+.idea/libraries
+.idea/.name
+.idea/modules.xml
+.idea/misc.xml
+.idea/.idea_modules.xml
+.idea/caches/
+/.idea/modules/
+/.idea/tasks/
+/.idea/launchProfiles/
+/.idea/*.iml
+.idea/*.ipr
+
+# Ignore unity build artifacts
+*.apk
+*.aab
+*.exe
+*.app
+*.bin
+*.nib
+*.pdb
+*.idb
+*.ipch
+*.aps
+*.tmp
 *.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
+*.lib
+*.ilk
+*.exp
+*.app
+*.dsym
+*.pdb
 *.a
 *.lib
+*.dll
+*.so
+*.dylib
+*.nupkg
+*.snupkg
+*.symbols.nupkg
+*.deb
+*.rpm
+*.tar.gz
+*.zip
+*.egg
+*.whl
+*.jar
+*.war
+*.ear
 
-# Executables
-*.exe
-*.out
-*.app
+# Mac-specific files
+*.xcuser
