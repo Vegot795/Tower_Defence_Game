@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 94eebcb61710f0745abd011baf9956e0
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - enemyPrefab: {fileID: 2364509105998881069, guid: 9a59cf7be43532246b238b12f9816dd0, type: 3}
+  - respawnPoint: {instanceID: 0}
+  - enemyTarget: {instanceID: 0}
+  - roadParent: {instanceID: 0}
+  - roadTile: {instanceID: 0}
+  - Waypoints: {instanceID: 0}
+  - waypoint: {instanceID: 0}
+  - EnemyBucket: {instanceID: 0}
+  - currentEnemy: {instanceID: 0}
+  - SpawnEnemyButton: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,10 +1,7 @@
-# This .gitignore file is for Unity projects using C#
-
-# Ignore system generated files
 .DS_Store
 Thumbs.db
 
-# Ignore project-specific files
+
 /*.csproj
 /*.sln
 /*.user
@@ -13,7 +10,7 @@ Thumbs.db
 /*.booproj
 /*.suo
 
-# Unity generated files
+
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
@@ -22,34 +19,34 @@ Thumbs.db
 /[Ll]ogs/
 /[Mm]emoryCaptures/
 
-# Asset meta data should only be shared if part of the project
+
 /[Aa]ssets/**/*.meta
 
-# Auto-generated files in project root
+
 /[Aa]ssets/AssetStoreTools*
 /exportedObj/
 /UserSettings/
 
-# Ignore build results
+
 /[Bb]uild/
 /[Bb]uilds/
 /[Tt]estResults/
 
-# Crashlytics generated file
+
 /Assets/Plugins/Android/com.crashlytics*
 
-# Visual Studio files
+
 .vscode/
 /.vs/
 /.vscode/settings.json
 
-# Unity auto-generated files
+
 /[Uu]serSettings/
 /Logs/
 /Packages/manifest.json
 /[Pp]ackages/packages-lock.json
 
-# JetBrains Rider & IntelliJ-based IDEs
+
 .idea/
 .idea/workspace.xml
 .idea/gradle.xml
@@ -65,7 +62,7 @@ Thumbs.db
 /.idea/*.iml
 .idea/*.ipr
 
-# Ignore unity build artifacts
+
 *.apk
 *.aab
 *.exe
@@ -102,5 +99,5 @@ Thumbs.db
 *.war
 *.ear
 
-# Mac-specific files
+
 *.xcuser
