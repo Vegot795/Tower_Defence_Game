@@ -7484,6 +7484,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d2d471fc9b58564bb734c14ba951f39, type: 3}
+--- !u!4 &1628714217 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2590994419819852599, guid: 5a5ef5cb8508aeb4b95e2a99ddf06ec5, type: 3}
+  m_PrefabInstance: {fileID: 3818900449371293537}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1648002146 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1652417013669728564, guid: 7d2d471fc9b58564bb734c14ba951f39, type: 3}
@@ -10670,10 +10675,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2342012100164835855, guid: 5a5ef5cb8508aeb4b95e2a99ddf06ec5, type: 3}
+      propertyPath: firePoint
+      value: 
+      objectReference: {fileID: 1628714217}
+    - target: {fileID: 2342012100164835855, guid: 5a5ef5cb8508aeb4b95e2a99ddf06ec5, type: 3}
+      propertyPath: missilePrefab
+      value: 
+      objectReference: {fileID: 781082896534329042, guid: 356913416ccc11343abe7cb8f59b3234, type: 3}
     - target: {fileID: 4882788051218485182, guid: 5a5ef5cb8508aeb4b95e2a99ddf06ec5, type: 3}
       propertyPath: m_Name
       value: BombTurret
       objectReference: {fileID: 0}
+    - target: {fileID: 7309159798351480146, guid: 5a5ef5cb8508aeb4b95e2a99ddf06ec5, type: 3}
+      propertyPath: missilePrefab
+      value: 
+      objectReference: {fileID: 781082896534329042, guid: 356913416ccc11343abe7cb8f59b3234, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

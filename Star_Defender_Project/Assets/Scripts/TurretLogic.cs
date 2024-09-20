@@ -101,7 +101,7 @@ public class TurretLogic : MonoBehaviour
 
             if (missile != null)
             {
-                missile.SetTarget(targetEnemy.gameObject); // Pass the target enemy
+                missile.SetTarget(targetEnemy.gameObject);
                 missile.SetDamage(turretDamage);
             }
 
