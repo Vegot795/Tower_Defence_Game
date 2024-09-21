@@ -12,37 +12,58 @@ public class TSManager : MonoBehaviour
     private GameObject selectedTowerPrefab;
     private GameObject currentPreview;
     private bool isTowerSelected = false;
+    private Vector3 cursorFieldPosition;
+    private Vector3 offMapPosition = new Vector3(100, 100, 100);
     void Start()
     {
+        HideTSInfo();
         if (towerPrefabs.Length > 0)
         {
             selectedTowerPrefab = null;
         }
     }
+    public void CheckCurrentField(Vector3 position)
+    {
+        this.cursorFieldPosition = position;
+    }
+    private void FixedUpdate()
+    {
+        CheckCurrentField(cursorFieldPosition);
+    }
     public void SelectTower(int index)
     {
-        if (currentPreview != null)
+        if (isTowerSelected && selectedTowerPrefab == towerPrefabs[index])
         {
-            Destroy(currentPreview);
+            DeselectTower();
         }
-        if (index >= 0 && index < towerPrefabs.Length) 
+        else
         {
-            selectedTowerPrefab = towerPrefabs[index];
-            isTowerSelected = true;
-            Debug.Log("Tower selected:" + selectedTowerPrefab.name);
+            if (currentPreview != null)
+            {
+                Destroy(currentPreview);
+            }
+            if (index >= 0 && index < towerPrefabs.Length) 
+            {
+                selectedTowerPrefab = towerPrefabs[index];
+                isTowerSelected = true;
+                Debug.Log("Tower selected:" + selectedTowerPrefab.name);
 
-            ShowPreview();
-            ShowTSInfo();
+                ShowPreview();
+                ShowTSInfo();
+            }
         }
     }
     public void DeselectTower()
     {
-        selectedTowerPrefab = null;
-        isTowerSelected = false;
-        Debug.Log("Tower deselected");
+        if (isTowerSelected)
+        {
+            selectedTowerPrefab = null;
+            isTowerSelected = false;
+            Debug.Log("Tower deselected");
 
-        HidePreview();
-        HideTSInfo();
+            HidePreview();
+            HideTSInfo();
+        }
     }
 
     public GameObject GetSelectedTower() 
@@ -60,8 +81,14 @@ public class TSManager : MonoBehaviour
         {
             currentPreview = Instantiate(selectedTowerPrefab);
             SetPreviewMaterialTransparency(currentPreview, 0.5f);
-            Debug.Log("Preview instance created.");
+            Collider[] colliders = currentPreview.GetComponentsInChildren<Collider>();
+
+            foreach (var collider in colliders)
+            {
+                collider.enabled = false;
+            }
         }
+            Debug.Log("Preview instance created.");
         return currentPreview;
     }
     private void ShowPreview()
@@ -72,6 +99,7 @@ public class TSManager : MonoBehaviour
         {
             currentPreview = Instantiate(selectedTowerPrefab);
             Collider previewCollider = currentPreview.GetComponent<Collider>();
+            
 
             if (previewCollider == null)
             {
@@ -89,6 +117,7 @@ public class TSManager : MonoBehaviour
             currentPreview.SetActive(true);
             SetPreviewMaterialTransparency(currentPreview, 0.5f);
         }
+        
     }
     private void HidePreview()
     {
@@ -117,4 +146,5 @@ public class TSManager : MonoBehaviour
     {
         TSInfo.gameObject.SetActive(false);
     }
+    
 }

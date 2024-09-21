@@ -33,6 +33,7 @@ public class ObjectDetection : MonoBehaviour
                 if (hitObject.CompareTag("MapTile"))
                 {
                     FindObjectOfType<ObjectPlacement>().SetSelectedCube(hitObject);
+                    Debug.Log("Detected new Tile: " + hitObject.name);
                 }
                 else
                 {
@@ -42,6 +43,7 @@ public class ObjectDetection : MonoBehaviour
             else
             {
                 Debug.Log("Cursor is not hovering over any interactable object.");
+                
             }
         }
         else

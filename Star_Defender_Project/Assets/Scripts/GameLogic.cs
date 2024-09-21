@@ -15,8 +15,6 @@ public class GameLogic : MonoBehaviour
     public GameObject EnemyBucket;
     public GameObject currentEnemy;
 
-    public TextMeshProUGUI SpawnEnemyButton;
-
     public int speed = 5;
 
     public List<GameObject> Waypoints_list = new List<GameObject>();
@@ -29,7 +27,6 @@ public class GameLogic : MonoBehaviour
 
     void Start()
     {
-        waypoint.GetComponent<MeshRenderer>().enabled = false;
         foreach (Transform child in Waypoints.transform)
         {
             if (child.gameObject.CompareTag("WaypointTag"))
@@ -46,7 +43,11 @@ public class GameLogic : MonoBehaviour
             }
         }
         SetLastWaypoint();
-        //DetectBlockNextToRoad();
+        
+        foreach (var waypoint in Waypoints_list)
+        {
+            waypoint.GetComponent<MeshRenderer>().enabled = false;
+        }
 
 
         // End of the Start section

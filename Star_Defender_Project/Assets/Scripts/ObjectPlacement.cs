@@ -39,6 +39,7 @@ public class ObjectPlacement : MonoBehaviour
     }
     private void Update()
     {
+        Debug.Log("Update method running...");
         if (selectionManager.IsTowerSelected())
         {
             UpdatePreviewPosition();
@@ -54,6 +55,12 @@ public class ObjectPlacement : MonoBehaviour
     }
     void PlaceTower()
     {
+        Debug.Log("Attempting to place tower...");
+
+        if (currentField == null)
+        {
+            Debug.Log("Current field is null");
+        }
         if (currentField != null)
         {
             GameObject turretPrefab = selectionManager.GetSelectedTower();
@@ -68,6 +75,8 @@ public class ObjectPlacement : MonoBehaviour
                 Vector3 position = new Vector3(currentField.transform.position.x, currentField.transform.position.y, currentField.transform.position.z - 0.4f);
                 Instantiate(turretPrefab, position, Quaternion.identity);
                 Debug.Log("Tower placed at:" + position);
+                currentField = null;
+                selectionManager.DeselectTower();
 
             }
             else
@@ -84,14 +93,15 @@ public class ObjectPlacement : MonoBehaviour
     }
     void UpdatePreviewPosition()
     {
-        if(selectionManager.IsTowerSelected() && currentField != null)
+        if (selectionManager.IsTowerSelected() && currentField != null)
         {
-            GameObject previewInstance = selectionManager.GetSelectedTower();
+            GameObject previewInstance = selectionManager.GetPreviewInstance(); 
             if (previewInstance != null)
-            {
+            {                
                 Vector3 position = new Vector3(currentField.transform.position.x, currentField.transform.position.y, currentField.transform.position.z - 0.4f);
                 previewInstance.transform.position = position;
             }
         }
     }
+
 }

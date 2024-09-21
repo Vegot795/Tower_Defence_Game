@@ -14,15 +14,41 @@ public class TurretLogic : MonoBehaviour
     public Transform firePoint;
     public float missileSpeed = 20f;
     public float rotationSpeed = 50f;
+    public int level = 1;
 
-    private float fireCountdown;
     private Transform targetEnemy;
     private List<GameObject> EnemiesInRange = new List<GameObject>();
+    private float fireCountdown;
+    private int cost = 100;
+    private int afterSellCurrency;
+    private int upgradeCost;
+    private int currentValue;
+
+    ScoreManager scoreManager;
+    private int GetUpgradeCost()
+    {
+        if (level == 1)
+        {
+            upgradeCost = cost + (cost / 2);
+        }
+        else if (level < 5)
+        {
+            upgradeCost = upgradeCost + (upgradeCost / 2);
+        }
+        return upgradeCost;
+    }
+
+    private void GetAllComponents()
+    {
+        scoreManager = GetComponent<ScoreManager>();
+        currentValue = cost;
+        GetUpgradeCost();
+    }
 
     private void Start()
     {
         fireCountdown = 1f / fireRate;
-        
+        GetAllComponents();
     }
 
     private void Update()
@@ -114,7 +140,35 @@ public class TurretLogic : MonoBehaviour
         }
 
     }
-   
+
+    public int GetLevel()
+    {
+        return level;
+    }
+    public void Upgrade()
+    {
+        if (level < 5)
+        {
+            level++;
+            turretDamage = turretDamage * 1.5f;
+            range = range*1.25f;
+            scoreManager.currency -= upgradeCost;
+            currentValue += upgradeCost;
+            Debug.Log("Tower upgraded to level " + level);
+        }
+        else
+        {
+            Debug.Log("Max level reached");
+        }
+
+    }
+   public void Sell()
+    {
+        afterSellCurrency = currentValue / 3;
+        Debug.Log("Tower Sold For " + afterSellCurrency);
+        scoreManager.AddCurrency(afterSellCurrency);
+        Destroy(gameObject);
+    }
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

@@ -7,10 +7,12 @@ public class EnemyObject : MonoBehaviour, IDamager
     private GameObject enemyTarget;
     private GameLogic gameLogic;
     private int currentWaypointIndex = 0;
-
+    
     public float health = 20f;
-    public float speed = 5f; // Speed for movement
+    public float speed = 5f;
+    public int scoreAmount = 30;
 
+    ScoreManager scoreManager;
     void Start()
     {
         // Find the GameLogic instance
@@ -85,6 +87,9 @@ public class EnemyObject : MonoBehaviour, IDamager
     }
     private void Die()
     {
+        scoreManager = FindObjectOfType<ScoreManager>();
+        scoreManager.AddScore(scoreAmount);
+        scoreManager.AddCurrency(scoreAmount);
         Destroy(gameObject);
     }
 }
