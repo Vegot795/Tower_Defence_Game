@@ -7,7 +7,6 @@ public class ScoreManager : MonoBehaviour
 {
     public TextMeshProUGUI ScoreLabel;
     public TextMeshProUGUI CurrenctyLabel;
-    public GameObject UpgradePanel;
 
     public int StartCurrency = 150;
     public int score = 0;
