@@ -9,11 +9,20 @@ public class MapGeneragot : MonoBehaviour
     public GameObject Waypoint;
     public int xMap = 16;
     public int yMap = 8;
+    public GameObject mapTiles;
+    public GameObject roadTIles;
+
+    private List<GameObject> MTList = new List<GameObject> ();
+    private List<GameObject> BTList = new List<GameObject> () ;
+    
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        MapGenerator(); // Call the map generator here if you want it to run on start
+        
+        MapGenerator();
+        BorderCubeFounder();
     }
 
     // Update is called once per frame
@@ -36,8 +45,29 @@ public class MapGeneragot : MonoBehaviour
                 Vector3 tilePosition = new Vector3(i, j, 0); // Fixed Vector3 initialization
 
                 // Instantiate the road prefab or whichever prefab you want
-                Instantiate(mapTile, tilePosition, Quaternion.identity); // Changed to 'road'
+                GameObject newMTile = Instantiate(mapTile, tilePosition, Quaternion.identity); // Changed to 'road'
+
+                newMTile.transform.SetParent(mapTiles.transform);
+                newMTile.transform.localPosition = tilePosition;
+                MTList.Add(newMTile);
             }
         }
+    }
+    
+    private void BorderCubeFounder()
+    {
+        foreach (var newTile in MTList)
+        {
+            if (newTile.transform.position.x == 0 && mapTile.transform.position.x == xMap )
+            {
+                BTList.Add(mapTile);
+            }
+            if (newTile.transform.position.y == 0 && mapTile.transform.position.y == yMap)
+            {
+                BTList.Add(mapTile);
+            }
+            
+        }
+        Debug.Log($"Attached {BTList.Count} to BTList");
     }
 }
