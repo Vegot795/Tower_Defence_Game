@@ -16,6 +16,7 @@ public class RoadBuilder : MonoBehaviour
     public GameObject StartPointPrefab;
     public GameObject EndPointPrefab;
     public int MinimapRoadLength = 2;
+    public float tileDistance = 1f;
 
 
     private GameObject hoveredField;
@@ -25,7 +26,7 @@ public class RoadBuilder : MonoBehaviour
     private List<GameObject> RoadList = new List<GameObject>();
     private GameObject StartPoint = null;
     private GameObject EndPoint = null;
-    private GameObject currentField = null;
+    private GameObject currentField;
 
 
 
@@ -39,6 +40,7 @@ public class RoadBuilder : MonoBehaviour
         {
             Debug.Log("butHand Successfully Assigned");
         }
+
     }
 
 
@@ -104,82 +106,100 @@ public class RoadBuilder : MonoBehaviour
         GameObject newRoadTile = Instantiate(RoadTile, hoveredField.transform.position, Quaternion.identity);
         newRoadTile.transform.SetParent(RoadTilesHolder.transform);
         RoadList.Add(newRoadTile);
-
+        currentField = hoveredField;
     }
 
     private void CheckForRoadBuildingInput() // this makes us build road on left mouse click
     {
         if (hoveredField != null && hoveredField.CompareTag("MapTile") && Input.GetMouseButtonDown(0)) // Check if cursor is above map tile & Detects if player want to place road
         {
-            bool isBorderTile = _BTList.Contains(hoveredField);
-
+            bool isBorderTile = _BTList.Contains(hoveredField); // bool if object is border tile or not
             if (StartPoint == null && isBorderTile) // If this will be first placed road tile, it has to be on the border of the map to create Start Point
             {
                 BuildRoad();
                 StartPoint = Instantiate(StartPointPrefab, hoveredField.transform.position, Quaternion.identity);
+
                 Debug.Log("Phase I - Start Point Assigned To: " + StartPoint.transform.position);
             }
-            else if (StartPoint != null && RoadList.Count < MinimapRoadLength) // Checks if road list has enough tiles to end, if not, player has to build in center of the map
+            else if (StartPoint != null)
             {
-                if (!isBorderTile) // checks if hovered field is not the border field
+                List<GameObject> neigList = GetNeighbours(currentField);
+                bool isNeighbor = neigList.Contains(hoveredField); // checks if next tile is a neighbor of the currentField
+
+                if (isNeighbor && RoadList.Count < MinimapRoadLength) // Checks if road list has enough tiles to end, if not, player has to build in center of the map
+                {
+                    if (!isBorderTile) // checks if hovered field is not the border field
+                    {
+                        BuildRoad();
+                        Debug.Log($"Phase II - Map Tiles {RoadList.Count} out of {MinimapRoadLength}");
+                    }
+                    else
+                    {
+                        Debug.Log("Cannot end building your road so fast");
+                    }
+                }
+                else if (isNeighbor && RoadList.Count >= MinimapRoadLength) // Checks if road is long enough;
                 {
                     BuildRoad();
-                    Debug.Log($"Phase II - Map Tiles {RoadList.Count} out of {MinimapRoadLength}");
-                }
-                else
-                {
-                    Debug.Log("Cannot end building your road so fast");
-                }
-            }
-            else if (StartPoint != null && RoadList.Count >= MinimapRoadLength) // Checks if road is long enough;
-            {
-                BuildRoad();
-                Debug.Log("Road built on:" + hoveredField.name + hoveredField.transform.position);
-                Debug.Log("Phase III");
+                    Debug.Log("Road built on:" + hoveredField.name + hoveredField.transform.position);
+                    Debug.Log("Phase III");
 
-                if (isBorderTile) // If player builds road on the border above min road lenght, end point will be instantiated
-                {
-                    GameObject EndPoint = Instantiate(EndPointPrefab, hoveredField.transform.position, Quaternion.identity);
-                    butHand.IsRBMenuOn = false;
-                    Debug.Log("Phase IV - End Point Assigned To: " + EndPoint.transform.position);
-                }
+                    if (isBorderTile) // If player builds road on the border above min road lenght, end point will be instantiated
+                    {
+                        GameObject EndPoint = Instantiate(EndPointPrefab, hoveredField.transform.position, Quaternion.identity);
+                        butHand.IsRBMenuOn = false;
+                        Debug.Log("Phase IV - End Point Assigned To: " + EndPoint.transform.position);
+                    }
 
+                }
+                /*else //  END | Message that something is messed up
+                {
+                    Debug.Log("Cannot build road here: " + hoveredField.transform.position);
+                    if (StartPoint != null)
+                    {
+                        Debug.Log("Start Point: " + StartPoint.transform.position);
+                    }
+                    Debug.Log("Border Tile: " + isBorderTile);
+                    Debug.Log(" Hovered Field: " + hoveredField.transform.position);
+                }*/
             }
+
             else
             {
-                Debug.Log("Cannot build road here: " + hoveredField.transform.position);
-                if (StartPoint != null)
-                {
-                    Debug.Log("Start Point: " + StartPoint.transform.position);
-                }
-                Debug.Log("Border Tile: " + isBorderTile);
-                Debug.Log(" Hovered Field: " + hoveredField.transform.position);
-                //Debug.Log($"Start Point: {StartPoint.transform.position} | Border Tile: {isBorderTile} |");
+                Debug.Log("You try to build the road on the field other than neighboring");
             }
         }
     }
-    private void CheckForNeighbours()
+
+    private List<GameObject> GetNeighbours(GameObject field)
     {
-        if (StartPoint != null)
+        List<GameObject> neighbours = new List<GameObject>();
+
+        Vector3 fieldPosition = field.transform.position;
+
+        Vector3[] directions = new Vector3[] // this is responsible for directions in looking
         {
-            if (currentField == null)
+            new Vector3(tileDistance, 0, 0),
+            new Vector3(-tileDistance, 0, 0),
+            new Vector3(0, tileDistance, 0),
+            new Vector3(0, -tileDistance, 0)
+        };
+
+        foreach (var direction in directions)
+        {
+            Vector3 neighbourPosition = fieldPosition + direction;
+
+            Collider[] hitColliders = Physics.OverlapSphere(neighbourPosition, 0.1f, interactableLayer);
+            foreach (Collider hitCollider in hitColliders)
             {
-                currentField.transform.position = StartPoint.transform.position;
+                GameObject neighbor = hitCollider.gameObject;
+                if (neighbor.CompareTag("MapTile"))
+                {
+                    neighbours.Add(neighbor);
+                    Debug.Log("Found neighbor: " + neighbor.transform.position);
+                }
             }
-
-
         }
-        else
-        {
-            return;
-        }
+        return neighbours;
     }
-    private bool IsOccupied() {
-
-    }
-    private void OnTriggerStay(Collider other) {
-        
-    }
-    
-
 }
