@@ -5,35 +5,28 @@ using UnityEngine;
 public class MapGeneragot : MonoBehaviour
 {
     public GameObject mapTile;
-    public GameObject road;
     public GameObject Waypoint;
     public int xMap = 16;
     public int yMap = 8;
     public GameObject mapTiles;
-    public GameObject roadTIles;
+    public GameObject BorSign;
+    public  List<GameObject> BTList = new List<GameObject>();
 
-    private List<GameObject> MTList = new List<GameObject> ();
-    private List<GameObject> BTList = new List<GameObject> () ;
-    
-    
+
+    private List<GameObject> MTList = new List<GameObject>();
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
         MapGenerator();
         BorderCubeFounder();
+        
     }
-
     // Update is called once per frame
     void Update()
     {
 
-    }
-
-    private void RoadGenerator()
-    {
-        // Add your road generation logic here
     }
 
     private void MapGenerator()
@@ -53,20 +46,27 @@ public class MapGeneragot : MonoBehaviour
             }
         }
     }
-    
+
     private void BorderCubeFounder()
     {
         foreach (var newTile in MTList)
         {
-            if (newTile.transform.position.x == 0 && mapTile.transform.position.x == xMap )
+            if (newTile.transform.localPosition.y == 0 && newTile.transform.localPosition.x < xMap)
             {
-                BTList.Add(mapTile);
+                BTList.Add(newTile);
             }
-            if (newTile.transform.position.y == 0 && mapTile.transform.position.y == yMap)
+            if (newTile.transform.localPosition.y == yMap - 1 && newTile.transform.localPosition.x < xMap)
             {
-                BTList.Add(mapTile);
+                BTList.Add(newTile);
             }
-            
+            if (newTile.transform.localPosition.x == 0 && newTile.transform.localPosition.y < yMap)
+            {
+                BTList.Add(newTile);
+            }
+            if (newTile.transform.localPosition.x == xMap - 1 && newTile.transform.localPosition.y < yMap)
+            {
+                BTList.Add(newTile);
+            }
         }
         Debug.Log($"Attached {BTList.Count} to BTList");
     }

@@ -95,9 +95,9 @@ public class ObjectPlacement : MonoBehaviour
     {
         if (selectionManager.IsTowerSelected() && currentField != null)
         {
-            GameObject previewInstance = selectionManager.GetPreviewInstance(); 
+            GameObject previewInstance = selectionManager.GetPreviewInstance();
             if (previewInstance != null)
-            {                
+            {
                 Vector3 position = new Vector3(currentField.transform.position.x, currentField.transform.position.y, currentField.transform.position.z - 0.4f);
                 previewInstance.transform.position = position;
             }
