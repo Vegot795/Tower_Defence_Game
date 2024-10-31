@@ -42,7 +42,7 @@ public class ObjectDetection : MonoBehaviour
             }
             else
             {
-                Debug.Log("Cursor is not hovering over any interactable object.");
+                //Debug.Log("Cursor is not hovering over any interactable object.");
                 
             }
         }
