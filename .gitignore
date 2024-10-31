@@ -45,6 +45,7 @@ Thumbs.db
 /Logs/
 /Packages/manifest.json
 /[Pp]ackages/packages-lock.json
+/Library
 
 
 .idea/
