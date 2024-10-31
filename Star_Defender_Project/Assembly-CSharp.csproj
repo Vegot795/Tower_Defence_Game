@@ -59,11 +59,7 @@
     <UnityVersion>2022.3.43f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
-=======
     <Analyzer Include="C:\Users\davie\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.0.4\Analyzers\Microsoft.Unity.Analyzers.dll" />
->>>>>>> JustinCase
     <Analyzer Include="D:\Unity\2022.3.43f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="D:\Unity\2022.3.43f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
@@ -73,11 +69,7 @@
     <Compile Include="Assets\Scripts\MapSaveLoad.cs" />
     <Compile Include="Assets\Scripts\TowerButton.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
-<<<<<<< HEAD
-    <Compile Include="Assets\Scripts\MapGenerator\ButtonHandler.cs" />
-=======
     <Compile Include="Assets\Scripts\MapCreator\RoadBuilder.cs" />
->>>>>>> JustinCase
     <Compile Include="Assets\Scripts\IDamager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
     <Compile Include="Assets\Scripts\MapCreator\MapGeneragot.cs" />
@@ -97,7 +89,6 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\TurretSelector.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
-    <Compile Include="Assets\Scripts\MapGenerator\MapGeneragot.cs" />
     <Compile Include="Assets\Scripts\ObjectDetection.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />

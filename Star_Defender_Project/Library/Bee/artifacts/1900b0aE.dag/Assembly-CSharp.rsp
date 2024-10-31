@@ -390,15 +390,10 @@
 "Assets/Scripts/GameLogic.cs"
 "Assets/Scripts/IDamager.cs"
 "Assets/Scripts/ILeveler.cs"
-<<<<<<< HEAD
-"Assets/Scripts/MapGenerator/ButtonHandler.cs"
-"Assets/Scripts/MapGenerator/MapGeneragot.cs"
-=======
 "Assets/Scripts/MapCreator/ButtonHandlerMapGen.cs"
 "Assets/Scripts/MapCreator/MapGeneragot.cs"
 "Assets/Scripts/MapCreator/RoadBuilder.cs"
 "Assets/Scripts/MapSaveLoad.cs"
->>>>>>> JustinCase
 "Assets/Scripts/MissleLogic.cs"
 "Assets/Scripts/ObjectDetection.cs"
 "Assets/Scripts/ObjectPlacement.cs"
