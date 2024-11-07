@@ -394,6 +394,7 @@
 "Assets/Scripts/MapCreator/MapGeneragot.cs"
 "Assets/Scripts/MapCreator/RoadBuilder.cs"
 "Assets/Scripts/MapSaveLoad.cs"
+"Assets/Scripts/Menu/MenuButHandler.cs"
 "Assets/Scripts/MissleLogic.cs"
 "Assets/Scripts/ObjectDetection.cs"
 "Assets/Scripts/ObjectPlacement.cs"
