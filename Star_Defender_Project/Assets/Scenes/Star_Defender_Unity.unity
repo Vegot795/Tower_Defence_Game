@@ -917,6 +917,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1652417013669728564, guid: 7d2d471fc9b58564bb734c14ba951f39, type: 3}
   m_PrefabInstance: {fileID: 895140803}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &205453024
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 205453025}
+  m_Layer: 0
+  m_Name: Waypoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &205453025
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205453024}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.8746772, y: -2.751063, z: 5.737503}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &214564396
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1190,6 +1221,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roadCubes: []
   blockedCubes: []
+  roadCubePrefab: {fileID: 0}
+  blockedCubePrefab: {fileID: 0}
 --- !u!1001 &283839644
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10079,13 +10112,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 2364509105998881069, guid: 9a59cf7be43532246b238b12f9816dd0, type: 3}
   respawnPoint: {fileID: 3206040457630032586, guid: ba5e4580ea0103645aff074993c378e3, type: 3}
-  enemyTarget: {fileID: 0}
+  enemyTarget: {fileID: 2137264474494076619, guid: df4808ac26080de459b7d8eaf55f845c, type: 3}
   roadParent: {fileID: 1719343658}
   roadTile: {fileID: 371248653451902983, guid: 26450b10a1407bf498c2a4a90a59f91c, type: 3}
-  Waypoints: {fileID: 0}
+  Waypoints: {fileID: 205453024}
   waypoint: {fileID: 594832620165764210, guid: 0de98fdc76b288a4782eddcfb7ef92fa, type: 3}
   EnemyBucket: {fileID: 166154501}
-  currentEnemy: {fileID: 0}
   speed: 5
   Waypoints_list: []
   Enemy_list: []
@@ -12499,3 +12531,4 @@ SceneRoots:
   - {fileID: 881886877}
   - {fileID: 2086539263}
   - {fileID: 2094777419}
+  - {fileID: 205453025}

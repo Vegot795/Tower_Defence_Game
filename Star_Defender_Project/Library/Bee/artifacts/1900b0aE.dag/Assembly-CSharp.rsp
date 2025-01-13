@@ -393,7 +393,6 @@
 "Assets/Scripts/MapCreator/ButtonHandlerMapGen.cs"
 "Assets/Scripts/MapCreator/MapGeneragot.cs"
 "Assets/Scripts/MapCreator/RoadBuilder.cs"
-"Assets/Scripts/MapSaveLoad.cs"
 "Assets/Scripts/MapSaver.cs"
 "Assets/Scripts/Menu/MenuButHandler.cs"
 "Assets/Scripts/MissleLogic.cs"
