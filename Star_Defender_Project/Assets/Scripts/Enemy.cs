@@ -97,7 +97,7 @@ public class EnemyObject : MonoBehaviour, IDamager
     void OnTriggerEnter(Collider other)
     {
         Debug.Log("OnTriggerEnter: " + other.gameObject.name + " vs " + (enemyTarget != null ? enemyTarget.name : "null"));
-        if (other.gameObject == enemyTarget)
+        if (other.CompareTag("EnemyTargetTag"))
         {
             Debug.Log("Enemy reached the target!");
             Destroy(gameObject, 1f);

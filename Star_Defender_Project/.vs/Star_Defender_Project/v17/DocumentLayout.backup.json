@@ -3,24 +3,24 @@
   "WorkspaceRootPath": "D:\\UnityHub\\Projects\\Tower_Defence_Game\\Star_Defender_Project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\UnityHub\\Projects\\Tower_Defence_Game\\Star_Defender_Project\\Assets\\Scripts\\Enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\UnityHub\\Projects\\Tower_Defence_Game\\Star_Defender_Project\\Assets\\Scripts\\BTAmmoLogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\BTAmmoLogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\UnityHub\\Projects\\Tower_Defence_Game\\Star_Defender_Project\\Assets\\Scripts\\TurretSelector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\TurretSelector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\UnityHub\\Projects\\Tower_Defence_Game\\Star_Defender_Project\\Assets\\Scripts\\GameLogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\GameLogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\UnityHub\\Projects\\Tower_Defence_Game\\Star_Defender_Project\\Assets\\Scripts\\BturretLogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\BturretLogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\UnityHub\\Projects\\Tower_Defence_Game\\Star_Defender_Project\\Assets\\Scripts\\MissleLogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\MissleLogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\UnityHub\\Projects\\Tower_Defence_Game\\Star_Defender_Project\\Assets\\Scripts\\BturretLogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\BturretLogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\UnityHub\\Projects\\Tower_Defence_Game\\Star_Defender_Project\\Assets\\Scripts\\Enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\UnityHub\\Projects\\Tower_Defence_Game\\Star_Defender_Project\\Assets\\Scripts\\GameLogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\GameLogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\UnityHub\\Projects\\Tower_Defence_Game\\Star_Defender_Project\\Assets\\Scripts\\ObjectPlacement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -62,56 +62,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "TurretSelector.cs",
-              "DocumentMoniker": "D:\\UnityHub\\Projects\\Tower_Defence_Game\\Star_Defender_Project\\Assets\\Scripts\\TurretSelector.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\TurretSelector.cs",
-              "ToolTip": "D:\\UnityHub\\Projects\\Tower_Defence_Game\\Star_Defender_Project\\Assets\\Scripts\\TurretSelector.cs",
-              "RelativeToolTip": "Assets\\Scripts\\TurretSelector.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAADwvyoAAAAkAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "BTAmmoLogic.cs",
+              "DocumentMoniker": "D:\\UnityHub\\Projects\\Tower_Defence_Game\\Star_Defender_Project\\Assets\\Scripts\\BTAmmoLogic.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\BTAmmoLogic.cs",
+              "ToolTip": "D:\\UnityHub\\Projects\\Tower_Defence_Game\\Star_Defender_Project\\Assets\\Scripts\\BTAmmoLogic.cs",
+              "RelativeToolTip": "Assets\\Scripts\\BTAmmoLogic.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-24T09:23:48.793Z",
+              "WhenOpened": "2025-05-24T09:58:53.802Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
+              "Title": "MissleLogic.cs",
+              "DocumentMoniker": "D:\\UnityHub\\Projects\\Tower_Defence_Game\\Star_Defender_Project\\Assets\\Scripts\\MissleLogic.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MissleLogic.cs",
+              "ToolTip": "D:\\UnityHub\\Projects\\Tower_Defence_Game\\Star_Defender_Project\\Assets\\Scripts\\MissleLogic.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MissleLogic.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAIwAIAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T08:49:35.963Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Enemy.cs",
               "DocumentMoniker": "D:\\UnityHub\\Projects\\Tower_Defence_Game\\Star_Defender_Project\\Assets\\Scripts\\Enemy.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy.cs",
               "ToolTip": "D:\\UnityHub\\Projects\\Tower_Defence_Game\\Star_Defender_Project\\Assets\\Scripts\\Enemy.cs",
               "RelativeToolTip": "Assets\\Scripts\\Enemy.cs",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAYwGoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAEoAAAAAAAAAAAArwGoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-24T08:52:36.177Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "MissleLogic.cs",
-              "DocumentMoniker": "D:\\UnityHub\\Projects\\Tower_Defence_Game\\Star_Defender_Project\\Assets\\Scripts\\MissleLogic.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\MissleLogic.cs",
-              "ToolTip": "D:\\UnityHub\\Projects\\Tower_Defence_Game\\Star_Defender_Project\\Assets\\Scripts\\MissleLogic.cs",
-              "RelativeToolTip": "Assets\\Scripts\\MissleLogic.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAQwBQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-24T08:49:35.963Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "BturretLogic.cs",
               "DocumentMoniker": "D:\\UnityHub\\Projects\\Tower_Defence_Game\\Star_Defender_Project\\Assets\\Scripts\\BturretLogic.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\BturretLogic.cs",
               "ToolTip": "D:\\UnityHub\\Projects\\Tower_Defence_Game\\Star_Defender_Project\\Assets\\Scripts\\BturretLogic.cs",
               "RelativeToolTip": "Assets\\Scripts\\BturretLogic.cs",
-              "ViewState": "AgIAAIoAAAAAAAAAAAAuwCEAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFsAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-24T07:21:02.564Z",
               "EditorCaption": ""
@@ -142,7 +144,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "GameLogic.cs",
               "DocumentMoniker": "D:\\UnityHub\\Projects\\Tower_Defence_Game\\Star_Defender_Project\\Assets\\Scripts\\GameLogic.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\GameLogic.cs",
@@ -150,8 +152,7 @@
               "RelativeToolTip": "Assets\\Scripts\\GameLogic.cs",
               "ViewState": "AgIAAA8AAAAAAAAAAAAgwEgAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-07T15:04:43.079Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-07T15:04:43.079Z"
             },
             {
               "$type": "Document",
@@ -187,8 +188,7 @@
               "RelativeToolTip": "Assets\\Scripts\\ObjectPlacement.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T17:15:23.831Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-29T17:15:23.831Z"
             },
             {
               "$type": "Document",
@@ -201,10 +201,6 @@
               "ViewState": "AgIAABMAAAAAAAAAAAAAACwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-18T17:03:38.494Z"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             },
             {
               "$type": "Document",
