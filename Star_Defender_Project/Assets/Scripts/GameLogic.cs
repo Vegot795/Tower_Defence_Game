@@ -13,10 +13,10 @@ public class GameLogic : MonoBehaviour
     public GameObject Waypoints;
     public GameObject waypoint;
     public GameObject EnemyBucket;
-    public GameObject currentEnemy;
 
     public int speed = 5;
 
+    private GameObject currentEnemy;
     public List<GameObject> Waypoints_list = new List<GameObject>();
     public List<GameObject> Enemy_list = new List<GameObject>();
     public List<GameObject> SelectableSpots = new List <GameObject>();
