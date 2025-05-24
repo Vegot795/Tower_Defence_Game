@@ -35,6 +35,7 @@ public class EnemyObject : MonoBehaviour, IDamager
     void Update()
     {
         Move();
+
     }
 
     void Move()
@@ -91,5 +92,15 @@ public class EnemyObject : MonoBehaviour, IDamager
         scoreManager.AddScore(scoreAmount);
         scoreManager.AddCurrency(scoreAmount);
         Destroy(gameObject);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("OnTriggerEnter: " + other.gameObject.name + " vs " + (enemyTarget != null ? enemyTarget.name : "null"));
+        if (other.gameObject == enemyTarget)
+        {
+            Debug.Log("Enemy reached the target!");
+            Destroy(gameObject, 1f);
+        }
     }
 }

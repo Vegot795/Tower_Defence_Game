@@ -61,7 +61,7 @@ public class GameLogic : MonoBehaviour
 
     void SetLastWaypoint()
     {
-        Vector3 etPosition = new Vector3(enemyTarget.transform.position.x, enemyTarget.transform.position.y, enemyTarget.transform.position.z -1);
+        Vector3 etPosition = new Vector3(enemyTarget.transform.position.x, enemyTarget.transform.position.y, enemyTarget.transform.position.z);
         lastWaypoint = Instantiate(waypoint, etPosition, Quaternion.identity);
         lastWaypoint.transform.SetParent(Waypoints.transform, true);
         Waypoints_list.Add(lastWaypoint);
