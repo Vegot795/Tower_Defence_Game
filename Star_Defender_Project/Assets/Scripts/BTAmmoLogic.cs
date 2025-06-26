@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using BturretLogic;
 
-public class BTAmmoLogic : MonoBehavior
+public class BTAmmoLogic : MonoBehaviour
 {
     public float damage;
     public float ExplosionRadius = 2f;
