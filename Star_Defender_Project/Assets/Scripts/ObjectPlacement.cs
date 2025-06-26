@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+//using System.Diagnostics;
 using UnityEngine;
 
 public class ObjectPlacement : MonoBehaviour
@@ -37,6 +38,18 @@ public class ObjectPlacement : MonoBehaviour
             Debug.Log("Selected tile:" + currentField.name);
         }
     }
+    public void SetSelectedTurret(GameObject hitObject)
+    {
+        this.currentField = hitObject.transform.parent.gameObject;
+        if (currentField == null)
+        {
+            Debug.Log("HitObject not found");
+        }
+        else
+        {
+            Debug.Log("Selected turret:" + currentField.name);
+        }
+    }
     private void Update()
     {
         Debug.Log("Update method running...");
@@ -60,9 +73,9 @@ public class ObjectPlacement : MonoBehaviour
         if (currentField == null)
         {
             Debug.Log("Current field is null");
+            return;
         }
-        if (currentField != null)
-        {
+
             GameObject turretPrefab = selectionManager.GetSelectedTower();
             if (turretPrefab == null)
             {
@@ -72,37 +85,43 @@ public class ObjectPlacement : MonoBehaviour
 
             if (currentField.CompareTag("MapTile"))
             {
-                Vector3 position = new Vector3(currentField.transform.position.x, currentField.transform.position.y, currentField.transform.position.z - 0.4f);
-                GameObject turret = Instantiate(turretPrefab, position, Quaternion.identity);
-                turret.GetComponent<TurretLogic>().Activate();
-                Debug.Log("Tower placed at:" + position);
-                currentField = null;
-                selectionManager.DeselectTower();
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit))
+                {
+
+                    Vector3 position = new Vector3(currentField.transform.position.x, currentField.transform.position.y, currentField.transform.position.z - 0.4f);
+                    GameObject turret = Instantiate(turretPrefab, position, Quaternion.identity);
+                    turret.GetComponent<TurretLogic>().Activate();
+                    Debug.Log("Tower placed at:" + position);
+                    currentField = null;
+                    selectionManager.DeselectTower();
+
+                }
+                else
+                {
+                    Debug.Log($"{currentField.name} is not available spot");
+                }
 
             }
-            else
-            {
-                Debug.Log($"{currentField.name} is not available spot");
-            }
-
-        }
     }
-    void CancelTowerPlacement()
-    {
-        selectionManager.DeselectTower();
-        Debug.Log("Turret placement cancelled");
-    }
-    void UpdatePreviewPosition()
-    {
-        if (selectionManager.IsTowerSelected() && currentField != null)
+        void CancelTowerPlacement()
         {
-            GameObject previewInstance = selectionManager.GetPreviewInstance();
-            if (previewInstance != null)
+            selectionManager.DeselectTower();
+            Debug.Log("Turret placement cancelled");
+        }
+        void UpdatePreviewPosition()
+        {
+            if (selectionManager.IsTowerSelected() && currentField != null)
             {
-                Vector3 position = new Vector3(currentField.transform.position.x, currentField.transform.position.y, currentField.transform.position.z - 0.4f);
-                previewInstance.transform.position = position;
+                GameObject previewInstance = selectionManager.GetPreviewInstance();
+                if (previewInstance != null)
+                {
+                    Vector3 position = new Vector3(currentField.transform.position.x, currentField.transform.position.y, currentField.transform.position.z - 0.4f);
+                    previewInstance.transform.position = position;
+                }
             }
         }
     }
 
-}

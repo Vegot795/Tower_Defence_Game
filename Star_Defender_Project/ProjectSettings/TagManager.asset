@@ -11,6 +11,7 @@ TagManager:
   - missle
   - MapTile
   - Background
+  - Turret
   layers:
   - Default
   - TransparentFX

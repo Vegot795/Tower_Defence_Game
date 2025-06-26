@@ -10917,7 +10917,7 @@ MonoBehaviour:
   mainCamera: {fileID: 611177884}
   interactableLayer:
     serializedVersion: 2
-    m_Bits: 2811
+    m_Bits: 3835
 --- !u!114 &1981291714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12973,9 +12973,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1638893986333469110, guid: eb903773f47bbf94d9344ab740c38f8f, type: 3}
+      propertyPath: m_TagString
+      value: Turret
+      objectReference: {fileID: 0}
     - target: {fileID: 2315230011650542101, guid: eb903773f47bbf94d9344ab740c38f8f, type: 3}
       propertyPath: missileSpeed
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539440465380255268, guid: eb903773f47bbf94d9344ab740c38f8f, type: 3}
+      propertyPath: m_TagString
+      value: Turret
       objectReference: {fileID: 0}
     - target: {fileID: 6360298415842887515, guid: eb903773f47bbf94d9344ab740c38f8f, type: 3}
       propertyPath: m_Name

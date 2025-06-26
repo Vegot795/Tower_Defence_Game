@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 4834010841898750426}
   m_Layer: 10
   m_Name: Turret
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -159,6 +159,7 @@ MonoBehaviour:
   firePoint: {fileID: 3661155066211304288}
   missileSpeed: 30
   rotationSpeed: 10
+  level: 1
 --- !u!1 &7141052499715096003
 GameObject:
   m_ObjectHideFlags: 0

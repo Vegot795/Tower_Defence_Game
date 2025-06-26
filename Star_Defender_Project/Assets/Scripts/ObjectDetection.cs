@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+//using System.Diagnostics;
 using UnityEngine;
 
 public class ObjectDetection : MonoBehaviour
@@ -32,8 +33,16 @@ public class ObjectDetection : MonoBehaviour
                 GameObject hitObject = hit.collider.gameObject;
                 if (hitObject.CompareTag("MapTile"))
                 {
+                    //ray = mainCamera.ScreenPointToRay(hitObject.transform.position);
+                    ///f(Physics.Raycast())
+                    //if()
                     FindObjectOfType<ObjectPlacement>().SetSelectedCube(hitObject);
                     Debug.Log("Detected new Tile: " + hitObject.name);
+                }
+                else if (hitObject.CompareTag("Turret"))
+                {
+                    FindObjectOfType<ObjectPlacement>().SetSelectedTurret(hitObject);
+                    Debug.Log("Detected new Turret: " + hitObject.name);
                 }
                 else
                 {

@@ -469,7 +469,7 @@ GameObject:
   - component: {fileID: 2342012100164835855}
   m_Layer: 10
   m_Name: BombTurret
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -512,6 +512,7 @@ MonoBehaviour:
   firePoint: {fileID: 2590994419819852599}
   missileSpeed: 20
   rotationSpeed: 50
+  level: 1
 --- !u!1 &5603507579585727539
 GameObject:
   m_ObjectHideFlags: 0
