@@ -36,14 +36,29 @@ public class TurretUpgradePanelLogic : MonoBehaviour
         bTurretLogic = GetComponent<BturretLogic>();
     }
 
+    private void UpgradePaneController(bool isUpgradePanelActive)
+    {
+        if (isUpgradePanelActive)
+        {
+            UpgradePanel.SetActive(true);
+        }
+        else
+        {
+            UpgradePanel.SetActive(false);
+        }
+    }   
+
     void Start()
     {
-        gameObject.SetActive(false);
+   
+        isUpgradePanelActive = false;
         GetAllComponents();
+        
     }
     private void Update()
     {
         GetDetectedObject(detectedField);
+        UpgradePaneController(isUpgradePanelActive);
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {

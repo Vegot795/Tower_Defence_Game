@@ -12,8 +12,7 @@ public class TurretSelector : MonoBehaviour
     private void Update()
     {
         if (Input.GetMouseButtonDown(0)) 
-        {
-            // Prevent raycast if pointer is over a UI element
+        {            
             if (UnityEngine.EventSystems.EventSystem.current != null &&
                 UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
             {

@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class TurretLogic : MonoBehaviour
 {
+    public bool isInPreview = false;
     public float turretDamage = 5f;
     public GameObject missilePrefab;
     public float range = 10f;

@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 
 public class BturretLogic : MonoBehaviour
 {
+    public bool isInPreview = false;
     public float turretDamage = 500;
     public GameObject missilePrefab;
     public float range = 20f;
@@ -28,7 +29,30 @@ public class BturretLogic : MonoBehaviour
     private int currentValue;
 
     ScoreManager scoreManager;
+    private void IsInPreview(bool isInPreview)
+    {
+        this.isInPreview = isInPreview;
+        if (isInPreview)
+        {
+            TurretLogic turretLogic = GetComponent<TurretLogic>();
+            if (turretLogic != null)
+                turretLogic.enabled = false;
 
+            BturretLogic bTurretLogic = GetComponent<BturretLogic>();
+            if (bTurretLogic != null)
+                bTurretLogic.enabled = false;
+        }
+        else
+        {
+            TurretLogic turretLogic = GetComponent<TurretLogic>();
+            if (turretLogic != null)
+                turretLogic.enabled = true;
+
+            BturretLogic bTurretLogic = GetComponent<BturretLogic>();
+            if (bTurretLogic != null)
+                bTurretLogic.enabled = true;
+        }
+    }
     private int GetUpgradeCost()
     {
         if (level == 1)
@@ -55,10 +79,9 @@ public class BturretLogic : MonoBehaviour
         GetAllComponents();
 
     }
-
     private void Update()
     {
-
+        IsInPreview(isInPreview);
         FindTarget();
 
 

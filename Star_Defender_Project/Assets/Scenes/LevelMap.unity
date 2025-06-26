@@ -122,6 +122,52 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &11223427
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 11223429}
+  - component: {fileID: 11223428}
+  m_Layer: 0
+  m_Name: UpgradePanelController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &11223428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11223427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe97e0bfbeb4f684d8b82cef1dfd42a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradePanel: {fileID: 6965943416087101982, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
+  isUpgradePanelActive: 0
+--- !u!4 &11223429
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11223427}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.8411851, y: -0.94846463, z: 1.6738656}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &40980565 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1652417013669728564, guid: 7d2d471fc9b58564bb734c14ba951f39, type: 3}
@@ -4743,6 +4789,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f098253a419f2c4b90f74a99bd1b113, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BTurretLogic: {fileID: 0}
+  TurretLogic: {fileID: 0}
   previewPrefab: {fileID: 0}
   towerPrefabs:
   - {fileID: 5608636468454570131, guid: 88c04eeb6de916843acae851dc31c1f2, type: 3}
@@ -10854,7 +10902,6 @@ GameObject:
   - component: {fileID: 1981291713}
   - component: {fileID: 1981291714}
   - component: {fileID: 1981291715}
-  - component: {fileID: 1981291716}
   m_Layer: 0
   m_Name: GameLogic
   m_TagString: Untagged
@@ -10960,20 +11007,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradePanel: {fileID: 0}
---- !u!114 &1981291716
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1981291709}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe97e0bfbeb4f684d8b82cef1dfd42a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UpgradePanel: {fileID: 6965943416087101982, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
-  isUpgradePanelActive: 0
 --- !u!1001 &1983689363
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13723,6 +13756,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 611177885}
+  - {fileID: 11223429}
   - {fileID: 152839163}
   - {fileID: 1981291711}
   - {fileID: 3895556367713447908}
