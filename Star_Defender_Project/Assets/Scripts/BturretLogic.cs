@@ -7,28 +7,43 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class BturretLogic : MonoBehaviour
+public class BturretLogic : MonoBehaviour, ILeveler
 {
-    public bool isInPreview = false;
-    public float turretDamage = 500;
-    public GameObject missilePrefab;
+
+    //Statistics
     public float range = 20f;
     public float fireRate = 1f;
-    public Transform firePoint;
     public float missileSpeed = 20f;
     public float rotationSpeed = 50f;
     public int level = 1;
+
+    private float turretDamage = 10;
+    private int cost = 300;
+    private int lvlCost = 200;
+    //Rest
+    public bool isInPreview = false;
+    public GameObject missilePrefab;
+    public Transform firePoint;
     public Transform targetEnemy;
     public BTAmmoLogic BTAmmoLogic; 
 
     private float fireCountdown;
     private List<GameObject> EnemiesInRange = new List<GameObject>();
-    private int cost = 100;
     private int afterSellCurrency;
     private int upgradeCost;
     private int currentValue;
 
     ScoreManager scoreManager;
+
+    public int GetUgpradeCostValue()
+    {
+        return GetUpgradeCost();
+    }
+
+    public int GetSellValue()
+    {
+        return GetSellMoney();
+    }   
     private void IsInPreview(bool isInPreview)
     {
         this.isInPreview = isInPreview;
@@ -53,18 +68,7 @@ public class BturretLogic : MonoBehaviour
                 bTurretLogic.enabled = true;
         }
     }
-    private int GetUpgradeCost()
-    {
-        if (level == 1)
-        {
-            upgradeCost = cost + (cost / 2);
-        }
-        else if (level < 5)
-        {
-            upgradeCost = upgradeCost + (upgradeCost / 2);
-        }
-        return upgradeCost;
-    }
+    
     
     private void GetAllComponents()
     {
@@ -215,10 +219,25 @@ public class BturretLogic : MonoBehaviour
     }
     public void Sell()
     {
-        afterSellCurrency = currentValue / 3;
+        afterSellCurrency = GetSellMoney();
         Debug.Log("Tower Sold For " + afterSellCurrency);
         scoreManager.AddCurrency(afterSellCurrency);
         Destroy(gameObject);
+    }
+    public int GetUpgradeCost()
+    {
+        upgradeCost = cost + (lvlCost * level);
+        return upgradeCost;
+    }
+    private int GetCurrentValue()
+    {
+        currentValue = cost;
+        return currentValue;
+    }
+    public int GetSellMoney()
+    {
+        afterSellCurrency = currentValue / 3;
+        return afterSellCurrency;
     }
     private void OnDrawGizmosSelected()
     {

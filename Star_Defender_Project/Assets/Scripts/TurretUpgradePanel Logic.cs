@@ -7,6 +7,8 @@ using UnityEditor.Overlays;
 
 public class TurretUpgradePanelLogic : MonoBehaviour
 {
+    public TextMeshProUGUI upgradeText;
+    public TextMeshProUGUI sellText;
     public GameObject UpgradePanel;
     public bool isUpgradePanelActive = false;
 
@@ -17,16 +19,10 @@ public class TurretUpgradePanelLogic : MonoBehaviour
     TurretLogic turretLogic;
     BturretLogic bTurretLogic;
     ObjectDetection objectDetection;
-
-    // Start is called before the first frame update
-    private void GetDetectedObject(GameObject currentField)
-    {
-        this.detectedField = currentField.gameObject;
-    }
     private void GetAllComponents()
     {
-        TextMeshProUGUI UpgradeButton = GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI SellButton = GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI UpgradeBut = GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI SellBut = GetComponent<TextMeshProUGUI>();
         
         GameObject currentTower = GetComponent<GameObject>();
 
@@ -68,6 +64,19 @@ public class TurretUpgradePanelLogic : MonoBehaviour
         isUpgradePanelActive = true;
         spawnedPanel.SetActive(true);
 
+        TextMeshProUGUI[] texts = spawnedPanel.GetComponentsInChildren<TextMeshProUGUI>(true);
+
+        foreach (var text in texts)
+        {
+            if (text.name == "UpgradeBut")
+            {
+                text.text = $"Upgrade: ({turret.GetUgpradeCostValue()}$)";
+            }
+            else if (text.name == "SellBut")
+            {
+                text.text = $"Sell: ({turret.GetSellValue()}$)";
+            }
+        }
     }
     public void Show(BturretLogic turret)
     {
@@ -82,6 +91,20 @@ public class TurretUpgradePanelLogic : MonoBehaviour
         Debug.Log("Upgrade panel spawned at: " + positionToDisplay);
         isUpgradePanelActive = true;
         spawnedPanel.SetActive(true);
+
+        TextMeshProUGUI[] texts = spawnedPanel.GetComponentsInChildren<TextMeshProUGUI>(true);
+
+        foreach (var text in texts)
+        {
+            if (text.name == "UpgradeBut")
+            {
+                text.text = $"Upgrade: ({turret.GetUgpradeCostValue()}$)";
+            }
+            else if (text.name == "SellBut")
+            {
+                text.text = $"Sell: ({turret.GetSellValue()}$)";
+            }
+        }
     }
     public void Hide()
     {
@@ -111,4 +134,8 @@ public class TurretUpgradePanelLogic : MonoBehaviour
     {
         turretLogic.Sell();
     }
+
+
+
+
 }
