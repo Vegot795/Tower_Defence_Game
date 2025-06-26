@@ -8,10 +8,11 @@ using UnityEditor.Overlays;
 public class TurretUpgradePanelLogic : MonoBehaviour
 {
     public GameObject UpgradePanel;
-   
+    public bool isUpgradePanelActive = false;
+
     private GameObject currentTower;
     private GameObject detectedField;
-    public bool isUpgradePanelActive = false;
+    private GameObject spawnedPanel;
 
     TurretLogic turretLogic;
     BturretLogic bTurretLogic;
@@ -29,42 +30,24 @@ public class TurretUpgradePanelLogic : MonoBehaviour
         
         GameObject currentTower = GetComponent<GameObject>();
 
-        ObjectDetection objectDetection = GetComponent<ObjectDetection>();
+        objectDetection = GetComponent<ObjectDetection>();
        
 
         turretLogic = GetComponent<TurretLogic>();
         bTurretLogic = GetComponent<BturretLogic>();
     }
 
-    private void UpgradePaneController(bool isUpgradePanelActive)
-    {
-        if (isUpgradePanelActive)
-        {
-            UpgradePanel.SetActive(true);
-        }
-        else
-        {
-            UpgradePanel.SetActive(false);
-        }
-    }   
-
     void Start()
     {
    
-        isUpgradePanelActive = false;
+        UpgradePanel.SetActive(false);
         GetAllComponents();
         
     }
     private void Update()
     {
-        GetDetectedObject(detectedField);
-        UpgradePaneController(isUpgradePanelActive);
 
         if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Hide();
-        }
-        if (Input.GetMouseButton(0) && !objectDetection.CompareTag("UpgradePanel"))
         {
             Hide();
         }
@@ -73,22 +56,44 @@ public class TurretUpgradePanelLogic : MonoBehaviour
 
     public void Show(TurretLogic turret)
     {
+        if (spawnedPanel != null)
+        {
+            Hide();
+            return;
+        }
         currentTower = turret.gameObject;
         Vector3 positionToDisplay = turret.transform.position;
-        Instantiate(UpgradePanel, positionToDisplay, Quaternion.identity);
+        spawnedPanel = Instantiate(UpgradePanel, positionToDisplay, Quaternion.identity);
+        Debug.Log("Upgrade panel spawned at: " + positionToDisplay);
         isUpgradePanelActive = true;
+        spawnedPanel.SetActive(true);
 
     }
     public void Show(BturretLogic turret)
     {
+        if (spawnedPanel != null)
+        {
+            Hide();
+            return;
+        }
         currentTower = turret.gameObject;
         Vector3 positionToDisplay = turret.transform.position;
-        Instantiate(UpgradePanel, positionToDisplay, Quaternion.identity);
+        spawnedPanel = Instantiate(UpgradePanel, positionToDisplay, Quaternion.identity);
+        Debug.Log("Upgrade panel spawned at: " + positionToDisplay);
         isUpgradePanelActive = true;
+        spawnedPanel.SetActive(true);
     }
     public void Hide()
     {
-        isUpgradePanelActive = false;
+        if (spawnedPanel != null)
+        {
+            spawnedPanel.SetActive(false);
+            Destroy(spawnedPanel);
+            Debug.Log("Upgrade panel destroyed.");
+            spawnedPanel = null;
+            isUpgradePanelActive = false;
+
+        }
     }
     public void UpgradeTower()
     {
