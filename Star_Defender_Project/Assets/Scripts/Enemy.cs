@@ -24,7 +24,7 @@ public class EnemyObject : MonoBehaviour, IDamager
             waypoints = gameLogic.Waypoints_list;
             enemyTarget = gameLogic.enemyTarget;
 
-            Debug.Log("Enemy initialized with GameLogic waypoints and target.");
+            //Debug.Log("Enemy initialized with GameLogic waypoints and target.");
         }
         else
         {
@@ -53,7 +53,7 @@ public class EnemyObject : MonoBehaviour, IDamager
 
                 if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
                 {
-                    Debug.Log("Reached waypoint " + currentWaypointIndex);
+                    //Debug.Log("Reached waypoint " + currentWaypointIndex);
                     currentWaypointIndex++;
                 }
             }
@@ -65,7 +65,7 @@ public class EnemyObject : MonoBehaviour, IDamager
                     targetPosition,
                     speed * Time.deltaTime
                 );
-                Debug.Log("Moving towards enemy target.");
+                //Debug.Log("Moving towards enemy target.");
             }
             else
             {
@@ -96,10 +96,13 @@ public class EnemyObject : MonoBehaviour, IDamager
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("OnTriggerEnter: " + other.gameObject.name + " vs " + (enemyTarget != null ? enemyTarget.name : "null"));
-        if (other.gameObject == enemyTarget)
+        if (other != enemyTarget) 
         {
-            Debug.Log("Enemy reached the target!");
+            Debug.Log("OnTriggerEnter: " + other.gameObject.name + " vs " + (enemyTarget != null ? enemyTarget.name : "null"));
+        }
+        if (other.CompareTag("EnemyTargetTag"))
+        {
+            //Debug.Log("Enemy reached the target!");
             Destroy(gameObject, 1f);
         }
     }

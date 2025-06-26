@@ -73,6 +73,9 @@ public class TurretLogic : MonoBehaviour
 
     void FindTarget()
     {
+        // Remove destroyed enemies from the list
+        EnemiesInRange.RemoveAll(enemy => enemy == null);
+
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, range);
         HashSet<GameObject> currentEnemies = new HashSet<GameObject>();
 

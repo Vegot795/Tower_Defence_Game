@@ -510,7 +510,7 @@ MonoBehaviour:
   range: 4
   fireRate: 0.3
   firePoint: {fileID: 2590994419819852599}
-  missileSpeed: 20
+  missileSpeed: 50
   rotationSpeed: 50
   level: 1
 --- !u!1 &5603507579585727539

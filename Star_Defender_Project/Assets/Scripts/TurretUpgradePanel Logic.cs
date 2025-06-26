@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UIElements;
+using UnityEditor.Overlays;
 
 public class TurretUpgradePanelLogic : MonoBehaviour
 {
-    public TextMeshProUGUI levelText;
-    public Button upgradeButton;
-    public Button sellButton;
-
+    public GameObject UpgradePanel;
+   
     private GameObject currentTower;
     private GameObject detectedField;
+    public bool isUpgradePanelActive = false;
 
     TurretLogic turretLogic;
     BturretLogic bTurretLogic;
@@ -24,9 +24,8 @@ public class TurretUpgradePanelLogic : MonoBehaviour
     }
     private void GetAllComponents()
     {
-        TextMeshProUGUI levelText = GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI upgradeButton = GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI sellButton = GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI UpgradeButton = GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI SellButton = GetComponent<TextMeshProUGUI>();
         
         GameObject currentTower = GetComponent<GameObject>();
 
@@ -56,35 +55,35 @@ public class TurretUpgradePanelLogic : MonoBehaviour
         }
     }
 
+
     public void Show(TurretLogic turret)
     {
         currentTower = turret.gameObject;
-        levelText.text = "Level: " + turret.GetLevel();
-        transform.position = turret.transform.position + new Vector3(0, 0, 15f);
-        gameObject.SetActive(true);
+        Vector3 positionToDisplay = turret.transform.position;
+        Instantiate(UpgradePanel, positionToDisplay, Quaternion.identity);
+        isUpgradePanelActive = true;
+
     }
     public void Show(BturretLogic turret)
     {
         currentTower = turret.gameObject;
-        levelText.text = "Level: " + turret.GetLevel();
-        transform.position = turret.transform.position + new Vector3(0, 0, 15f);
-        gameObject.SetActive(true);
+        Vector3 positionToDisplay = turret.transform.position;
+        Instantiate(UpgradePanel, positionToDisplay, Quaternion.identity);
+        isUpgradePanelActive = true;
     }
     public void Hide()
     {
-        gameObject?.SetActive(false);
+        isUpgradePanelActive = false;
     }
     public void UpgradeTower()
     {
         if (turretLogic != null)
         {
             turretLogic.Upgrade();
-            levelText.text = "Level: " + turretLogic.GetLevel();
         }
         else if (bTurretLogic != null)
         {
             bTurretLogic.Upgrade();
-            levelText.text = "Level " + bTurretLogic.GetLevel();
 
         }
     }

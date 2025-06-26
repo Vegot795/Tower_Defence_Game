@@ -34,7 +34,7 @@ public class ObjectPlacement : MonoBehaviour
         }
         else
         {
-            Debug.Log("Selected tile:" + currentField.name);
+            //Debug.Log("Selected tile:" + currentField.name);
         }
     }
     private void Update()
