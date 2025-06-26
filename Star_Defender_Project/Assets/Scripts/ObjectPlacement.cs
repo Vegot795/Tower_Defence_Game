@@ -73,8 +73,7 @@ public class ObjectPlacement : MonoBehaviour
             if (currentField.CompareTag("MapTile"))
             {
                 Vector3 position = new Vector3(currentField.transform.position.x, currentField.transform.position.y, currentField.transform.position.z - 0.4f);
-                GameObject turret = Instantiate(turretPrefab, position, Quaternion.identity);
-                turret.GetComponent<TurretLogic>().Activate();
+                Instantiate(turretPrefab, position, Quaternion.identity);
                 Debug.Log("Tower placed at:" + position);
                 currentField = null;
                 selectionManager.DeselectTower();

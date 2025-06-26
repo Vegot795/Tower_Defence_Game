@@ -98,8 +98,6 @@ public class TSManager : MonoBehaviour
         if (selectedTowerPrefab != null)
         {
             currentPreview = Instantiate(selectedTowerPrefab);
-            TurretLogic turretLogic = currentPreview.GetComponent<TurretLogic>();
-            turretLogic.Deactivate();
             Collider previewCollider = currentPreview.GetComponent<Collider>();
             
 

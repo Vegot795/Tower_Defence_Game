@@ -23,7 +23,6 @@ public class TurretLogic : MonoBehaviour
     private int afterSellCurrency;
     private int upgradeCost;
     private int currentValue;
-    private bool active = true;
 
     ScoreManager scoreManager;
     private int GetUpgradeCost()
@@ -63,17 +62,12 @@ public class TurretLogic : MonoBehaviour
             AimAtEnemy();
 
             // Decrement fireCountdown and shoot if needed
-            if (!active)
+            fireCountdown -= Time.deltaTime;
+            if (fireCountdown <= 0f)
             {
-                return;
+                Shoot();
+                fireCountdown = 1f / fireRate; // Reset fireCountdown
             }
-                fireCountdown -= Time.deltaTime;
-                if (fireCountdown <= 0f)
-                {
-                    Shoot();
-                    fireCountdown = 1f / fireRate; // Reset fireCountdown
-                }
-            
         }
     }
 
@@ -182,13 +176,5 @@ public class TurretLogic : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
-    }
-    public void Activate()
-    {
-        active = true;
-    }
-    public void Deactivate()
-    {
-        active = false;
     }
 }
