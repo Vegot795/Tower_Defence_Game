@@ -25,6 +25,18 @@ public class ObjectPlacement : MonoBehaviour
         }
 
     }
+    public void SetSelectedTurret(GameObject hitObject)
+    {
+        this.currentField = hitObject.transform.parent.gameObject;
+        if (currentField == null)
+        {
+            Debug.Log("HitObject not found");
+        }
+        else
+        {
+            Debug.Log("Selected turret:" + currentField.name);
+        }
+    }
     public void SetSelectedCube(GameObject hitObject)
     {
         this.currentField = hitObject;
