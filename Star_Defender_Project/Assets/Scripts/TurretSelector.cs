@@ -3,7 +3,10 @@ using UnityEngine;
 public class TurretSelector : MonoBehaviour
 {
     public TurretUpgradePanelLogic upgradePanel;
+    public GameObject turToPass;
+    public GameObject CurrentTurret;
 
+    
     private void Start()
     {
         if (upgradePanel == null)
@@ -30,14 +33,18 @@ public class TurretSelector : MonoBehaviour
                 TurretLogic turretLogic = hit.collider.GetComponent<TurretLogic>();
                 BturretLogic bTurretLogic = hit.collider.GetComponent<BturretLogic>();
 
+
+
                 if (turretLogic != null)
                 {
+                    GameObject CurrentTurret = turretLogic.gameObject;
                     upgradePanel.Show(turretLogic);
                     upgradePanel.isUpgradePanelActive = true;
                     Debug.Log("Turret was clicked");
                 }
                 else if (bTurretLogic != null)
                 {
+                    GameObject CurrentTurret = bTurretLogic.gameObject;
                     upgradePanel.Show(bTurretLogic);
                     upgradePanel.isUpgradePanelActive = true;
                     Debug.Log("Turret was clicked");
@@ -54,5 +61,10 @@ public class TurretSelector : MonoBehaviour
                 return;
             }
         }
+    }
+    public GameObject GetCurrentTurret()
+    {
+        turToPass = CurrentTurret;
+        return turToPass;
     }
 }

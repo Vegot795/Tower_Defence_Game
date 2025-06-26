@@ -91,7 +91,7 @@ public class TSManager : MonoBehaviour
                 collider.enabled = false;
             }
         }
-        Debug.Log("Preview instance created.");
+        //Debug.Log("Preview instance created.");
         return currentPreview;
     }
     private void ShowPreview()

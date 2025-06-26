@@ -7,12 +7,12 @@ using UnityEditor.Overlays;
 
 public class TurretUpgradePanelLogic : MonoBehaviour
 {
+    GameObject currentTower;
     public TextMeshProUGUI upgradeText;
     public TextMeshProUGUI sellText;
     public GameObject UpgradePanel;
     public bool isUpgradePanelActive = false;
 
-    private GameObject currentTower;
     private GameObject detectedField;
     private GameObject spawnedPanel;
 
@@ -23,22 +23,26 @@ public class TurretUpgradePanelLogic : MonoBehaviour
     {
         TextMeshProUGUI UpgradeBut = GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI SellBut = GetComponent<TextMeshProUGUI>();
-        
+
         GameObject currentTower = GetComponent<GameObject>();
 
         objectDetection = GetComponent<ObjectDetection>();
-       
+
 
         turretLogic = GetComponent<TurretLogic>();
         bTurretLogic = GetComponent<BturretLogic>();
     }
 
+    public void SetTarget(GameObject CurrentTower)
+    {
+        this.currentTower = CurrentTower;
+    }
     void Start()
     {
-   
+
         UpgradePanel.SetActive(false);
         GetAllComponents();
-        
+
     }
     private void Update()
     {
@@ -88,7 +92,7 @@ public class TurretUpgradePanelLogic : MonoBehaviour
         currentTower = turret.gameObject;
         Vector3 positionToDisplay = turret.transform.position;
         spawnedPanel = Instantiate(UpgradePanel, positionToDisplay, Quaternion.identity);
-        Debug.Log("Upgrade panel spawned at: " + positionToDisplay);
+        //Debug.Log("Upgrade panel spawned at: " + positionToDisplay);
         isUpgradePanelActive = true;
         spawnedPanel.SetActive(true);
 
@@ -132,10 +136,15 @@ public class TurretUpgradePanelLogic : MonoBehaviour
     }
     public void SellTower()
     {
-        turretLogic.Sell();
+        Debug.Log("SellTower called. turretLogic: " + (turretLogic != null) + ", bTurretLogic: " + (bTurretLogic != null));
+        if (turretLogic != null)
+        {
+            turretLogic.Sell();
+        }
+        else if (bTurretLogic != null)
+        {
+            bTurretLogic.Sell();
+        }
+        Hide();
     }
-
-
-
-
 }

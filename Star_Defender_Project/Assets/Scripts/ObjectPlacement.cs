@@ -55,7 +55,7 @@ public class ObjectPlacement : MonoBehaviour
     }
     void PlaceTower()
     {
-        Debug.Log("Attempting to place tower...");
+        //Debug.Log("Attempting to place tower...");
 
         if (currentField == null)
         {
@@ -84,7 +84,7 @@ public class ObjectPlacement : MonoBehaviour
                     bTurretLogic.isInPreview = true;
                 Collider previewCollider = turretPrefab.GetComponent<Collider>();
 
-                Debug.Log("Tower placed at:" + position);
+                //Debug.Log("Tower placed at:" + position);
                 currentField = null;
                 selectionManager.DeselectTower();
 

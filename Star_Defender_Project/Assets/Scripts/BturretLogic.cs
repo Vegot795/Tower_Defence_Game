@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Reflection;
 using Unity.VisualScripting;
@@ -32,6 +33,7 @@ public class BturretLogic : MonoBehaviour, ILeveler
     private int afterSellCurrency;
     private int upgradeCost;
     private int currentValue;
+    private int SellMoney;
 
     ScoreManager scoreManager;
 
@@ -219,9 +221,9 @@ public class BturretLogic : MonoBehaviour, ILeveler
     }
     public void Sell()
     {
-        afterSellCurrency = GetSellMoney();
-        Debug.Log("Tower Sold For " + afterSellCurrency);
-        scoreManager.AddCurrency(afterSellCurrency);
+        SellMoney = GetSellMoney();
+        Debug.Log("Tower Sold For " + SellMoney);
+        scoreManager.AddCurrency(SellMoney);
         Destroy(gameObject);
     }
     public int GetUpgradeCost()

@@ -122,54 +122,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &11223427
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 11223429}
-  - component: {fileID: 11223428}
-  m_Layer: 0
-  m_Name: UpgradePanelController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &11223428
+--- !u!114 &11223428 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 2341062234741436840, guid: d365c3392a124a344921d91013503056, type: 3}
+  m_PrefabInstance: {fileID: 6500124291387682067}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 11223427}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe97e0bfbeb4f684d8b82cef1dfd42a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeCostText: {fileID: 1859079359}
-  sellText: {fileID: 1973133505}
-  UpgradePanel: {fileID: 6965943416087101982, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
-  isUpgradePanelActive: 0
---- !u!4 &11223429
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 11223427}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.8411851, y: -0.94846463, z: 1.6738656}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &40980565 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1652417013669728564, guid: 7d2d471fc9b58564bb734c14ba951f39, type: 3}
@@ -9492,43 +9455,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6586815810509319663, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
       propertyPath: m_text
-      value: <b>UPGRADE</>
+      value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6794820631257637432, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11223428}
     - target: {fileID: 6965943416087101982, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
       propertyPath: m_Name
       value: NodeUI
       objectReference: {fileID: 0}
+    - target: {fileID: 6965943416087101982, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7801281556880369882, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7801281556880369882, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7801281556880369882, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 7801281556880369882, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 7979304369699025787, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7979304369699025787, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7979304369699025787, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7979304369699025787, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10467,17 +10438,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d2d471fc9b58564bb734c14ba951f39, type: 3}
---- !u!114 &1859079359 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6101879120698684881, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
-  m_PrefabInstance: {fileID: 1745502815}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1879274339 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1652417013669728564, guid: 7d2d471fc9b58564bb734c14ba951f39, type: 3}
@@ -11132,6 +11092,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradePanel: {fileID: 11223428}
+  turToPass: {fileID: 0}
+  CurrentTurret: {fileID: 0}
 --- !u!1001 &1983689363
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13502,6 +13464,67 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 551d757896ad64b40a9bf2884c035897, type: 3}
+--- !u!1001 &6500124291387682067
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 605078641379593624, guid: d365c3392a124a344921d91013503056, type: 3}
+      propertyPath: m_Name
+      value: UpgradePanelController
+      objectReference: {fileID: 0}
+    - target: {fileID: 2341062234741436840, guid: d365c3392a124a344921d91013503056, type: 3}
+      propertyPath: sellText
+      value: 
+      objectReference: {fileID: 1973133505}
+    - target: {fileID: 8824814280363935740, guid: d365c3392a124a344921d91013503056, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.8411851
+      objectReference: {fileID: 0}
+    - target: {fileID: 8824814280363935740, guid: d365c3392a124a344921d91013503056, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.94846463
+      objectReference: {fileID: 0}
+    - target: {fileID: 8824814280363935740, guid: d365c3392a124a344921d91013503056, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.6738656
+      objectReference: {fileID: 0}
+    - target: {fileID: 8824814280363935740, guid: d365c3392a124a344921d91013503056, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8824814280363935740, guid: d365c3392a124a344921d91013503056, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8824814280363935740, guid: d365c3392a124a344921d91013503056, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8824814280363935740, guid: d365c3392a124a344921d91013503056, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8824814280363935740, guid: d365c3392a124a344921d91013503056, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8824814280363935740, guid: d365c3392a124a344921d91013503056, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8824814280363935740, guid: d365c3392a124a344921d91013503056, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d365c3392a124a344921d91013503056, type: 3}
 --- !u!1001 &7090931485344040818
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13787,7 +13810,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 611177885}
-  - {fileID: 11223429}
+  - {fileID: 6500124291387682067}
   - {fileID: 152839163}
   - {fileID: 1981291711}
   - {fileID: 3895556367713447908}
