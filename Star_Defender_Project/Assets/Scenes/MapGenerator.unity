@@ -710,7 +710,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 594, y: -270}
+  m_AnchoredPosition: {x: 369, y: 73}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &979335519
@@ -756,7 +756,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 979335520}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1735959275}
+        m_TargetAssemblyTypeName: MapSaver, Assembly-CSharp
+        m_MethodName: SaveMap
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &979335520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -965,7 +977,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -150, y: 342}
+  m_AnchoredPosition: {x: -150, y: 213}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1397238039
@@ -1360,8 +1372,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1735959272}
-  - component: {fileID: 1735959274}
   - component: {fileID: 1735959273}
+  - component: {fileID: 1735959275}
+  - component: {fileID: 1735959274}
   m_Layer: 0
   m_Name: GameLogic
   m_TagString: Untagged
@@ -1418,7 +1431,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1735959269}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eba5f02cef6f046448ec9d80fad296fb, type: 3}
+  m_Script: {fileID: 11500000, guid: e3c5db720bf5af248ac143e192751a5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mapTile: {fileID: 4432622285920651431, guid: 7d2d471fc9b58564bb734c14ba951f39, type: 3}
@@ -1426,8 +1439,24 @@ MonoBehaviour:
   xMap: 16
   yMap: 8
   mapTiles: {fileID: 2108175185}
-  BorSign: {fileID: 8238401642994463969, guid: cae79985dbf7f484bbbd4bb528fb5254, type: 3}
+  BorSign: {fileID: 882022992}
   BTList: []
+--- !u!114 &1735959275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735959269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9d16ed778373a549ab6c97499c45806, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roadCubes: []
+  blockedCubes: []
+  roadCubePrefab: {fileID: 371248653451902983, guid: 26450b10a1407bf498c2a4a90a59f91c, type: 3}
+  blockedCubePrefab: {fileID: 8238401642994463969, guid: cae79985dbf7f484bbbd4bb528fb5254, type: 3}
 --- !u!1 &1993066091
 GameObject:
   m_ObjectHideFlags: 0

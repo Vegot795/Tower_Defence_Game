@@ -13,10 +13,11 @@ public class GameLogic : MonoBehaviour
     public GameObject Waypoints;
     public GameObject waypoint;
     public GameObject EnemyBucket;
-    public GameObject currentEnemy;
+
 
     public int speed = 5;
 
+    private GameObject currentEnemy;
     public List<GameObject> Waypoints_list = new List<GameObject>();
     public List<GameObject> Enemy_list = new List<GameObject>();
     public List<GameObject> SelectableSpots = new List <GameObject>();
@@ -61,7 +62,7 @@ public class GameLogic : MonoBehaviour
 
     void SetLastWaypoint()
     {
-        Vector3 etPosition = new Vector3(enemyTarget.transform.position.x, enemyTarget.transform.position.y, enemyTarget.transform.position.z -1);
+        Vector3 etPosition = new Vector3(enemyTarget.transform.position.x, enemyTarget.transform.position.y, enemyTarget.transform.position.z);
         lastWaypoint = Instantiate(waypoint, etPosition, Quaternion.identity);
         lastWaypoint.transform.SetParent(Waypoints.transform, true);
         Waypoints_list.Add(lastWaypoint);
@@ -70,8 +71,10 @@ public class GameLogic : MonoBehaviour
 
     public void SpawnEnemy()
     {
-        currentEnemy = Instantiate(enemyPrefab, respawnPoint.transform.position, Quaternion.identity);
+        Vector3 spawnPos = respawnPoint.transform.position + new Vector3(0, 0, 1.6f);
+        currentEnemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+
     }
 
-    
+
 }

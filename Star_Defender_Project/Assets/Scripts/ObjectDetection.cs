@@ -37,7 +37,7 @@ public class ObjectDetection : MonoBehaviour
                     ///f(Physics.Raycast())
                     //if()
                     FindObjectOfType<ObjectPlacement>().SetSelectedCube(hitObject);
-                    Debug.Log("Detected new Tile: " + hitObject.name);
+                    //Debug.Log("Detected new Tile: " + hitObject.name);
                 }
                 else if (hitObject.CompareTag("Turret"))
                 {

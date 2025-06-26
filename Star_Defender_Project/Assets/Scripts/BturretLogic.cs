@@ -9,17 +9,18 @@ using UnityEngine.SceneManagement;
 
 public class BturretLogic : MonoBehaviour
 {
-    public float turretDamage = 5f;
+    public float turretDamage = 500;
     public GameObject missilePrefab;
-    public float range = 10f;
+    public float range = 20f;
     public float fireRate = 1f;
     public Transform firePoint;
     public float missileSpeed = 20f;
     public float rotationSpeed = 50f;
     public int level = 1;
+    public Transform targetEnemy;
+    public BTAmmoLogic BTAmmoLogic; 
 
     private float fireCountdown;
-    private Transform targetEnemy;
     private List<GameObject> EnemiesInRange = new List<GameObject>();
     private int cost = 100;
     private int afterSellCurrency;
@@ -49,6 +50,7 @@ public class BturretLogic : MonoBehaviour
     }
     private void Start()
     {
+        Physics.gravity = new Vector3(0, 0, 9.81f); // Set gravity to -Z direction
         fireCountdown = 1f / fireRate;
         GetAllComponents();
 
@@ -75,6 +77,9 @@ public class BturretLogic : MonoBehaviour
 
     void FindTarget()
     {
+        // Remove destroyed enemies from the list
+        EnemiesInRange.RemoveAll(enemy => enemy == null);
+
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, range);
         HashSet<GameObject> currentEnemies = new HashSet<GameObject>();
 
@@ -109,33 +114,56 @@ public class BturretLogic : MonoBehaviour
             targetEnemy = null;
         }
     }
-    
+
     void Shoot()
     {
         if (targetEnemy == null)
             return;
-        GameObject BTAmmo = Instantiate(missilePrefab, firePoint.position, Quaternion.identity);
 
+        GameObject BTAmmo = Instantiate(missilePrefab, firePoint.position, Quaternion.identity);
         Rigidbody rb = BTAmmo.GetComponent<Rigidbody>();
+        BTAmmoLogic = BTAmmo.GetComponent<BTAmmoLogic>();
+        if (BTAmmoLogic != null)
+        {
+            BTAmmoLogic.SetTarget(targetEnemy);
+            BTAmmoLogic.SetDamage(turretDamage);
+        }
 
         if (rb != null)
         {
-            Vector3 direction = (targetEnemy.position - firePoint.position).normalized;
-            float upwardArcHeight = 5f;
-            float distanceToEnemy = Vector3.Distance(firePoint.position, targetEnemy.position);
+            Vector3 start = firePoint.position;
+            Vector3 end = targetEnemy.position;
 
-            Vector3 velocity = new Vector3(
-                direction.x * distanceToEnemy / 2,
-                direction.y * distanceToEnemy / 2,
-                -upwardArcHeight
-                ).normalized * missileSpeed;
+            float h = 5f; // dodatkowy ³uk wysokoœci
+            float gravity = Mathf.Abs(Physics.gravity.z); // 9.81
 
-            rb.velocity = velocity;
-            
+            // Pozioma odleg³oœæ w XY
+            Vector3 horizontal = new Vector3(end.x - start.x, end.y - start.y, 0f);
+            float horizontalDistance = horizontal.magnitude;
+
+            // Prêdkoœæ pionowa (w osi Z) do osi¹gniêcia h
+            float vz = Mathf.Sqrt(2 * gravity * h);
+
+            // Czas w górê i w dó³
+            float timeUp = vz / gravity;
+            float heightDifference = start.z - end.z; // UWAGA: start - end, bo Z dzia³a odwrotnie
+            float timeDown = Mathf.Sqrt(2 * Mathf.Max(0f, h + heightDifference) / gravity);
+            float totalTime = timeUp + timeDown;
+
+            // Prêdkoœæ pozioma
+            Vector3 velocityXY = horizontal / totalTime;
+
+            // Pe³na prêdkoœæ
+            Vector3 launchVelocity = new Vector3(velocityXY.x, velocityXY.y, -vz); // MINUS, bo -Z to góra
+            rb.velocity = launchVelocity;
+
+            Debug.Log("Pocisk wystrzelony z prêdkoœci¹: " + rb.velocity);
         }
-        Debug.Log("BTAmmo fired");
-
     }
+
+
+
+
 
     public int GetLevel()
     {

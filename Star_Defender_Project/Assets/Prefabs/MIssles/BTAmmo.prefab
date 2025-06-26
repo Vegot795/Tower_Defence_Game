@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1005773569361795855}
   - component: {fileID: 6817780015323099201}
   - component: {fileID: 6433393345411559936}
+  - component: {fileID: 1928483715959894594}
   m_Layer: 6
   m_Name: BTAmmo
   m_TagString: missle
@@ -146,3 +147,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1928483715959894594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781082896534329042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bcc8a7dc68dcb3439437897a879ce40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  ExplosionRadius: 2

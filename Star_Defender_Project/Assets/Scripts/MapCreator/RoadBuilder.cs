@@ -17,15 +17,14 @@ public class RoadBuilder : MonoBehaviour
     public GameObject EndPointPrefab;
     public int MinimapRoadLength = 2;
     public float tileDistance = 1f;
+    public List<GameObject> RoadList = new List<GameObject>();
 
 
     private GameObject hoveredField;
     private ObjectDetection detector;
     private MapGeneragot mapGen;
-    private List<GameObject> _BTList = new List<GameObject>();
-    private List<GameObject> RoadList = new List<GameObject>();
+    public List<GameObject> _BTList = new List<GameObject>();
     private GameObject StartPoint = null;
-    private GameObject EndPoint = null;
     private GameObject currentField;
 
 

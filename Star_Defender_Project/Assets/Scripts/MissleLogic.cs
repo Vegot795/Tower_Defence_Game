@@ -5,13 +5,10 @@ public class MissleLogic : MonoBehaviour
     private GameObject target;
     private float damage;
     private Rigidbody rb;
-    void Start()
+
+    public void SetTarget(GameObject targetEnemy)
     {
-        Debug.Log($"Passed Damage Value {damage}");
-    }
-    public void SetTarget(GameObject target)
-    {
-        this.target = target;
+        this.target = targetEnemy;
     }
 
     public void SetDamage(float turretDamage)
@@ -32,18 +29,18 @@ public class MissleLogic : MonoBehaviour
 
 
     public void DealDamage(GameObject target)
-{
-    Debug.Log("Attempting to deal damage.");
-    var hittable = target.GetComponent<IDamager>();
-    if (hittable != null)
     {
-        Debug.Log("Target has IDamager. Dealing damage.");
-        hittable.ReceiveDamage((int)damage);
+        //Debug.Log("Attempting to deal damage.");
+        var hittable = target.GetComponent<IDamager>();
+        if (hittable != null)
+        {
+            //Debug.Log($"Target has IDamager. Dealing {damage} damage to {target.name}.");
+            hittable.ReceiveDamage((int)damage);
+        }
+        else
+        {
+            Debug.Log("Target does not implement IDamager.");
+        }
     }
-    else
-    {
-        Debug.Log("Target does not implement IDamager.");
-    }
-}
 
 }
