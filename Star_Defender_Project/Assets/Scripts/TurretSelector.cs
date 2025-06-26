@@ -2,18 +2,23 @@ using UnityEngine;
 
 public class TurretSelector : MonoBehaviour
 {
-
     public TurretUpgradePanelLogic upgradePanel;
+    public GameObject turToPass;
+    public GameObject CurrentTurret;
 
+    
     private void Start()
     {
-        upgradePanel = GetComponent<TurretUpgradePanelLogic>();
+        if (upgradePanel == null)
+        {
+            Debug.LogError("Assign TurretUpgradePanelLogic in the Inspector.");
+        }
     }
+
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0)) 
+        if (Input.GetMouseButtonDown(0))
         {
-            // Prevent raycast if pointer is over a UI element
             if (UnityEngine.EventSystems.EventSystem.current != null &&
                 UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
             {
@@ -25,34 +30,41 @@ public class TurretSelector : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                // Check if the clicked object is a turret
                 TurretLogic turretLogic = hit.collider.GetComponent<TurretLogic>();
                 BturretLogic bTurretLogic = hit.collider.GetComponent<BturretLogic>();
 
+
+
                 if (turretLogic != null)
                 {
-                    // Show upgrade panel for the turret
+                    GameObject CurrentTurret = turretLogic.gameObject;
                     upgradePanel.Show(turretLogic);
                     upgradePanel.isUpgradePanelActive = true;
-
+                    Debug.Log("Turret was clicked");
                 }
                 else if (bTurretLogic != null)
                 {
-                    // Show upgrade panel for the b-turret
+                    GameObject CurrentTurret = bTurretLogic.gameObject;
                     upgradePanel.Show(bTurretLogic);
                     upgradePanel.isUpgradePanelActive = true;
-                }                
+                    Debug.Log("Turret was clicked");
+                }
             }
             else if (upgradePanel.isUpgradePanelActive)
             {
-                // Hide the panel if nothing is clicked
                 upgradePanel.Hide();
                 upgradePanel.isUpgradePanelActive = false;
             }
             else
             {
+                Debug.Log("No turret clicked or upgrade panel is not active.");
                 return;
             }
         }
+    }
+    public GameObject GetCurrentTurret()
+    {
+        turToPass = CurrentTurret;
+        return turToPass;
     }
 }

@@ -5,8 +5,9 @@ using System.Reflection;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class TurretLogic : MonoBehaviour
+public class TurretLogic : MonoBehaviour, ILeveler
 {
+    public bool isInPreview = false;
     public float turretDamage = 5f;
     public GameObject missilePrefab;
     public float range = 10f;
@@ -26,19 +27,16 @@ public class TurretLogic : MonoBehaviour
     private bool active = true;
 
     ScoreManager scoreManager;
-    private int GetUpgradeCost()
+
+    public int GetUgpradeCostValue()
     {
-        if (level == 1)
-        {
-            upgradeCost = cost + (cost / 2);
-        }
-        else if (level < 5)
-        {
-            upgradeCost = upgradeCost + (upgradeCost / 2);
-        }
-        return upgradeCost;
+        return GetUpgradeCost();
     }
 
+    public int GetSellValue()
+    {
+        return GetSellMoney();
+    }
     private void GetAllComponents()
     {
         scoreManager = GetComponent<ScoreManager>();
@@ -54,7 +52,7 @@ public class TurretLogic : MonoBehaviour
 
     private void Update()
     {
-        
+
         FindTarget();
 
 
@@ -67,13 +65,13 @@ public class TurretLogic : MonoBehaviour
             {
                 return;
             }
-                fireCountdown -= Time.deltaTime;
-                if (fireCountdown <= 0f)
-                {
-                    Shoot();
-                    fireCountdown = 1f / fireRate; // Reset fireCountdown
-                }
-            
+            fireCountdown -= Time.deltaTime;
+            if (fireCountdown <= 0f)
+            {
+                Shoot();
+                fireCountdown = 1f / fireRate; // Reset fireCountdown
+            }
+
         }
     }
 
@@ -102,7 +100,7 @@ public class TurretLogic : MonoBehaviour
         }
         foreach (GameObject enemy in currentEnemies)
         {
-            if(!EnemiesInRange.Contains(enemy))
+            if (!EnemiesInRange.Contains(enemy))
             {
                 EnemiesInRange.Add(enemy);
             }
@@ -118,7 +116,7 @@ public class TurretLogic : MonoBehaviour
     }
     void AimAtEnemy()
     {
-        if(targetEnemy != null)
+        if (targetEnemy != null)
         {
             Vector3 direction = (targetEnemy.position - transform.position).normalized;
             float angleZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -160,7 +158,7 @@ public class TurretLogic : MonoBehaviour
         {
             level++;
             turretDamage = turretDamage * 1.5f;
-            range = range*1.25f;
+            range = range * 1.25f;
             scoreManager.currency -= upgradeCost;
             currentValue += upgradeCost;
             Debug.Log("Tower upgraded to level " + level);
@@ -171,9 +169,9 @@ public class TurretLogic : MonoBehaviour
         }
 
     }
-   public void Sell()
+    public void Sell()
     {
-        afterSellCurrency = currentValue / 3;
+        afterSellCurrency = GetSellMoney();
         Debug.Log("Tower Sold For " + afterSellCurrency);
         scoreManager.AddCurrency(afterSellCurrency);
         Destroy(gameObject);
@@ -183,12 +181,20 @@ public class TurretLogic : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
     }
-    public void Activate()
+
+    private int GetUpgradeCost()
     {
-        active = true;
+        upgradeCost = cost + (200) * level;
+        return upgradeCost;
     }
-    public void Deactivate()
+    private int GetCurrentValue()
     {
-        active = false;
+        currentValue = cost;
+        return currentValue;
+    }
+    public int GetSellMoney()
+    {
+        afterSellCurrency = currentValue / 3;
+        return afterSellCurrency;
     }
 }

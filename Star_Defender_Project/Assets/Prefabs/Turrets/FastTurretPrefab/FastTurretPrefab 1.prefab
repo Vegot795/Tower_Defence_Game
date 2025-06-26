@@ -222,6 +222,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1013162267741366456}
   - component: {fileID: 2315230011650542101}
+  - component: {fileID: 8477031967361569850}
   m_Layer: 10
   m_Name: FastTurretPrefab 1
   m_TagString: Untagged
@@ -259,6 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66c5e5b8d1451804ca276dc7b47355eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInPreview: 0
   turretDamage: 1
   missilePrefab: {fileID: 4707234256563468855, guid: 51b7e4bed56ae6143a426aaf3e764174, type: 3}
   range: 2
@@ -266,6 +268,28 @@ MonoBehaviour:
   firePoint: {fileID: 8367602851184021129}
   missileSpeed: 30
   rotationSpeed: 5
+  level: 1
+--- !u!135 &8477031967361569850
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6360298415842887515}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9198790591774369280
 GameObject:
   m_ObjectHideFlags: 0

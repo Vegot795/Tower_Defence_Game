@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class TSManager : MonoBehaviour
 {
+    public GameObject BTurretLogic;
+    public GameObject TurretLogic;
     public GameObject previewPrefab;
     public GameObject[] towerPrefabs;
     public TextMeshProUGUI TSInfo;
@@ -21,12 +23,13 @@ public class TSManager : MonoBehaviour
         {
             selectedTowerPrefab = null;
         }
+        BTurretLogic = Resources.Load<GameObject>("BTurretLogic");
     }
     public void CheckCurrentField(Vector3 position)
     {
         this.cursorFieldPosition = position;
     }
-    private void FixedUpdate()
+    void Update()
     {
         CheckCurrentField(cursorFieldPosition);
     }
@@ -42,7 +45,7 @@ public class TSManager : MonoBehaviour
             {
                 Destroy(currentPreview);
             }
-            if (index >= 0 && index < towerPrefabs.Length) 
+            if (index >= 0 && index < towerPrefabs.Length)
             {
                 selectedTowerPrefab = towerPrefabs[index];
                 isTowerSelected = true;
@@ -66,9 +69,9 @@ public class TSManager : MonoBehaviour
         }
     }
 
-    public GameObject GetSelectedTower() 
+    public GameObject GetSelectedTower()
     {
-        return selectedTowerPrefab; 
+        return selectedTowerPrefab;
     }
     public bool IsTowerSelected()
     {
@@ -88,7 +91,7 @@ public class TSManager : MonoBehaviour
                 collider.enabled = false;
             }
         }
-            Debug.Log("Preview instance created.");
+        //Debug.Log("Preview instance created.");
         return currentPreview;
     }
     private void ShowPreview()
@@ -98,10 +101,16 @@ public class TSManager : MonoBehaviour
         if (selectedTowerPrefab != null)
         {
             currentPreview = Instantiate(selectedTowerPrefab);
+
             TurretLogic turretLogic = currentPreview.GetComponent<TurretLogic>();
-            turretLogic.Deactivate();
+            if (turretLogic != null)
+                turretLogic.isInPreview = true;
+
+            BturretLogic bTurretLogic = currentPreview.GetComponent<BturretLogic>();
+            if (bTurretLogic != null)
+                bTurretLogic.isInPreview = true;
             Collider previewCollider = currentPreview.GetComponent<Collider>();
-            
+
 
             if (previewCollider == null)
             {
@@ -119,7 +128,7 @@ public class TSManager : MonoBehaviour
             currentPreview.SetActive(true);
             SetPreviewMaterialTransparency(currentPreview, 0.5f);
         }
-        
+
     }
     private void HidePreview()
     {
@@ -148,5 +157,5 @@ public class TSManager : MonoBehaviour
     {
         TSInfo.gameObject.SetActive(false);
     }
-    
+
 }
