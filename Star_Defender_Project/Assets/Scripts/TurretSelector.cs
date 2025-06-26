@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class TurretSelector : MonoBehaviour
 {
+
     public TurretUpgradePanelLogic upgradePanel;
 
     private void Start()
@@ -10,8 +11,15 @@ public class TurretSelector : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0)) // Left mouse button clicked
+        if (Input.GetMouseButtonDown(0)) 
         {
+            // Prevent raycast if pointer is over a UI element
+            if (UnityEngine.EventSystems.EventSystem.current != null &&
+                UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+            {
+                return;
+            }
+
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
@@ -25,22 +33,25 @@ public class TurretSelector : MonoBehaviour
                 {
                     // Show upgrade panel for the turret
                     upgradePanel.Show(turretLogic);
+                    upgradePanel.isUpgradePanelActive = true;
+
                 }
                 else if (bTurretLogic != null)
                 {
                     // Show upgrade panel for the b-turret
                     upgradePanel.Show(bTurretLogic);
-                }
-                else
-                {
-                    // Hide the panel if the clicked object is not a turret
-                    upgradePanel.Hide();
-                }
+                    upgradePanel.isUpgradePanelActive = true;
+                }                
             }
-            else
+            else if (upgradePanel.isUpgradePanelActive)
             {
                 // Hide the panel if nothing is clicked
                 upgradePanel.Hide();
+                upgradePanel.isUpgradePanelActive = false;
+            }
+            else
+            {
+                return;
             }
         }
     }

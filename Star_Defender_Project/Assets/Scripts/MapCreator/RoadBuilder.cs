@@ -25,7 +25,6 @@ public class RoadBuilder : MonoBehaviour
     private MapGeneragot mapGen;
     public List<GameObject> _BTList = new List<GameObject>();
     private GameObject StartPoint = null;
-    private GameObject EndPoint = null;
     private GameObject currentField;
 
 

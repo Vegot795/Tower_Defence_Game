@@ -14,6 +14,7 @@ public class GameLogic : MonoBehaviour
     public GameObject waypoint;
     public GameObject EnemyBucket;
 
+
     public int speed = 5;
 
     private GameObject currentEnemy;
@@ -70,8 +71,10 @@ public class GameLogic : MonoBehaviour
 
     public void SpawnEnemy()
     {
-        currentEnemy = Instantiate(enemyPrefab, respawnPoint.transform.position, Quaternion.identity);
+        Vector3 spawnPos = respawnPoint.transform.position + new Vector3(0, 0, 1.6f);
+        currentEnemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+
     }
 
-    
+
 }

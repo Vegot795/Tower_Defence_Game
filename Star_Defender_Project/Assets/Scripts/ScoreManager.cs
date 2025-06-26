@@ -33,7 +33,7 @@ public class ScoreManager : MonoBehaviour
         private set
         {
             score = value;
-            Debug.Log("Score updated:" + score);
+            //Debug.Log("Score updated:" + score);
             ShowStats();
         }
     }
@@ -47,7 +47,7 @@ public class ScoreManager : MonoBehaviour
         private set
         {
             currency = value;
-            Debug.Log("Currency updated: " + currency);
+            //Debug.Log("Currency updated: " + currency);
             ShowStats();
         }
     }

@@ -9,17 +9,18 @@ using UnityEngine.SceneManagement;
 
 public class BturretLogic : MonoBehaviour
 {
-    public float turretDamage = 5f;
+    public float turretDamage = 500;
     public GameObject missilePrefab;
-    public float range = 10f;
+    public float range = 20f;
     public float fireRate = 1f;
     public Transform firePoint;
     public float missileSpeed = 20f;
     public float rotationSpeed = 50f;
     public int level = 1;
+    public Transform targetEnemy;
+    public BTAmmoLogic BTAmmoLogic; 
 
     private float fireCountdown;
-    private Transform targetEnemy;
     private List<GameObject> EnemiesInRange = new List<GameObject>();
     private int cost = 100;
     private int afterSellCurrency;
@@ -76,6 +77,9 @@ public class BturretLogic : MonoBehaviour
 
     void FindTarget()
     {
+        // Remove destroyed enemies from the list
+        EnemiesInRange.RemoveAll(enemy => enemy == null);
+
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, range);
         HashSet<GameObject> currentEnemies = new HashSet<GameObject>();
 
@@ -118,6 +122,12 @@ public class BturretLogic : MonoBehaviour
 
         GameObject BTAmmo = Instantiate(missilePrefab, firePoint.position, Quaternion.identity);
         Rigidbody rb = BTAmmo.GetComponent<Rigidbody>();
+        BTAmmoLogic = BTAmmo.GetComponent<BTAmmoLogic>();
+        if (BTAmmoLogic != null)
+        {
+            BTAmmoLogic.SetTarget(targetEnemy);
+            BTAmmoLogic.SetDamage(turretDamage);
+        }
 
         if (rb != null)
         {
