@@ -31,6 +31,7 @@ public class EnemyObject : MonoBehaviour, IDamager
         {
             Debug.LogError("GameLogic script not found.");
         }
+        levelLogic = FindObjectOfType<LevelLogic>();
     }
 
     void Update()
@@ -109,7 +110,13 @@ public class EnemyObject : MonoBehaviour, IDamager
         if (other.CompareTag("EnemyTargetTag"))
         {
             //Debug.Log("Enemy reached the target!");
-            Destroy(gameObject, 1f);
+            Destroy(gameObject);
+            LevelLogic levelLogic = FindObjectOfType<LevelLogic>();
+            if (levelLogic != null)
+            {
+                levelLogic.OnEnemyKilled(this.gameObject);
+            }
+            levelLogic.EnemyTouchedTarget();
         }
     }
     public void SetHP(int health)

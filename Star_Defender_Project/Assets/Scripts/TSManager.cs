@@ -95,7 +95,7 @@ public class TSManager : MonoBehaviour
                 if (playerMoney < towerCost)
                 {
                     Debug.Log("Not enough money to select this tower.");
-
+                    
                     DeselectTower();
                     return;
                 }
@@ -152,8 +152,7 @@ public class TSManager : MonoBehaviour
     {
         if (currentPreview != null) return;
 
-        // Only show preview if selectedTowerPrefab is not null and the object under the cursor is a cube map
-        if (selectedTowerPrefab != null && IsCursorOverCubeMap())
+        if (selectedTowerPrefab != null)
         {
             currentPreview = Instantiate(selectedTowerPrefab);
 
@@ -165,6 +164,7 @@ public class TSManager : MonoBehaviour
             if (bTurretLogic != null)
                 bTurretLogic.isInPreview = true;
             Collider previewCollider = currentPreview.GetComponent<Collider>();
+
 
             if (previewCollider == null)
             {
@@ -183,22 +183,6 @@ public class TSManager : MonoBehaviour
             SetPreviewMaterialTransparency(currentPreview, 0.5f);
         }
 
-    }
-
-    // Helper method to check if the object under the cursor is a cube map
-    private bool IsCursorOverCubeMap()
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 100f))
-        {
-            // You can check by tag, layer, or component. Here, let's assume cubes have tag "CubeMap"
-            if (hit.collider != null && hit.collider.gameObject.CompareTag("CubeMap"))
-            {
-                return true;
-            }
-        }
-        return false;
     }
     private void HidePreview()
     {

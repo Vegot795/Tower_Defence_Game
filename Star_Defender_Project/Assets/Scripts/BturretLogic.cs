@@ -89,7 +89,8 @@ public class BturretLogic : MonoBehaviour, ILeveler
     }
     private void Update()
     {
-        IsInPreview(isInPreview);
+        if (isInPreview)
+            return;
         FindTarget();
 
 

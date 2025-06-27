@@ -8,7 +8,8 @@ public class ObjectPlacement : MonoBehaviour
     private ObjectDetection detector;
     private GameObject currentField;
     private ScoreManager scoreManager;
-    
+    private TurretUpgradePanelLogic upgradePanel;
+
 
     private void Start()
     {
@@ -30,6 +31,7 @@ public class ObjectPlacement : MonoBehaviour
         {
             Debug.LogError("ScoreManager not found! Make sure it's in the scene.");
         }
+        upgradePanel = FindAnyObjectByType<TurretUpgradePanelLogic>();
     }
 
     public void SetSelectedCube(GameObject hitObject)
@@ -38,10 +40,6 @@ public class ObjectPlacement : MonoBehaviour
         if (currentField == null)
         {
             Debug.Log("HitObject not found");
-        }
-        else
-        {
-            Debug.Log($"SetSelectedCube: {currentField.name}, tag: {currentField.tag}");
         }
     }
 
@@ -68,6 +66,7 @@ public class ObjectPlacement : MonoBehaviour
             Debug.Log("Current field is null");
             return;
         }
+        Debug.Log($"Current field: {currentField.name}, tag: {currentField.tag}");
 
         GameObject turretPrefab = selectionManager.GetSelectedTower();
         if (turretPrefab == null)
@@ -75,7 +74,7 @@ public class ObjectPlacement : MonoBehaviour
             Debug.Log("No tower prefab selected");
             return;
         }
-
+        Debug.Log($"Selected turret prefab: {turretPrefab.name}");
         int cost = 0;
         TurretLogic turretLogic = turretPrefab.GetComponent<TurretLogic>();
         if (turretLogic != null)
@@ -90,21 +89,35 @@ public class ObjectPlacement : MonoBehaviour
                 cost = bTurretLogic.turretCost;
             }
         }
+        Debug.Log($"Turret cost: {cost}, Player currency: {scoreManager.currency}");
 
         if (scoreManager != null && cost > 0)
         {
             if (scoreManager.currency < cost)
             {
                 Debug.Log("Not enough credits to place tower.");
-                // Optionally show UI feedback here
+                if (upgradePanel != null)
+                    upgradePanel.ShowNotEnoughCredits();
                 return;
             }
         }
 
         if (currentField.CompareTag("MapTile"))
         {
+            Debug.Log("Placing turret...");
             Vector3 position = new Vector3(currentField.transform.position.x, currentField.transform.position.y, currentField.transform.position.z - 0.4f);
             GameObject turret = Instantiate(turretPrefab, position, Quaternion.identity);
+            BturretLogic instanceBTurretLogic = turret.GetComponent<BturretLogic>();
+            if (instanceBTurretLogic != null)
+            {
+                instanceBTurretLogic.isInPreview = false;
+                // Optionally, call a method to handle preview state change if you want
+                // instanceBTurretLogic.SetPreviewState(false);
+            }
+            else
+            {
+                Debug.Log($"{currentField.name} is not available spot (tag: {currentField.tag})");
+            }
 
             // Deduct cost from currency pool
             if (scoreManager != null && cost > 0)
@@ -116,14 +129,13 @@ public class ObjectPlacement : MonoBehaviour
             TurretLogic instanceTurretLogic = turret.GetComponent<TurretLogic>();
             if (instanceTurretLogic != null)
             {
-                instanceTurretLogic.isInPreview = true;
+                instanceTurretLogic.isInPreview = false;
             }
             else
             {
-                BturretLogic instanceBTurretLogic = turret.GetComponent<BturretLogic>();
                 if (instanceBTurretLogic != null)
                 {
-                    instanceBTurretLogic.isInPreview = true;
+                    instanceBTurretLogic.isInPreview = false;
                 }
             }
 

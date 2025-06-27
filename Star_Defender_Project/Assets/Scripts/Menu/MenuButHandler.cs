@@ -17,7 +17,8 @@ public class MenuButHandler : MonoBehaviour
 
     public void StartLevel()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Level 1");
+        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+        Debug.Log("Starting Level 1");
     }
     public void QuitGame()
     {

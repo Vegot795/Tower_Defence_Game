@@ -35,7 +35,30 @@ public class TurretLogic : MonoBehaviour, ILeveler
     {
         return GetUpgradeCost();
     }
+    private void IsInPreview(bool isInPreview)
+    {
+        this.isInPreview = isInPreview;
+        if (isInPreview)
+        {
+            TurretLogic turretLogic = GetComponent<TurretLogic>();
+            if (turretLogic != null)
+                turretLogic.enabled = false;
 
+            BturretLogic bTurretLogic = GetComponent<BturretLogic>();
+            if (bTurretLogic != null)
+                bTurretLogic.enabled = false;
+        }
+        else
+        {
+            TurretLogic turretLogic = GetComponent<TurretLogic>();
+            if (turretLogic != null)
+                turretLogic.enabled = true;
+
+            BturretLogic bTurretLogic = GetComponent<BturretLogic>();
+            if (bTurretLogic != null)
+                bTurretLogic.enabled = true;
+        }
+    }
     public int GetSellValue()
     {
         return GetSellMoney();
@@ -62,6 +85,8 @@ public class TurretLogic : MonoBehaviour, ILeveler
 
     private void Update()
     {
+        if (isInPreview)
+            return;
 
         FindTarget();
 

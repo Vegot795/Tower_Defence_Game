@@ -7,17 +7,22 @@ public class LevelLogic : MonoBehaviour
 {
     GameLogic gameLogic;
 
+
     public int currentWave;
     public int maxWaves = 20;
-    public GameObject WinScreen;
-    public TextMeshProUGUI WaveDisplay;
+    public int playerHP;
 
-    private int playerHP = 100;
+    public GameObject WinScreen;
+    public GameObject DeathScreen;
+    public TextMeshProUGUI WaveDisplay;
+    public TextMeshProUGUI PlayerHPDisplay;
+
     private int enemiesPerWave = 5;
     private int enemiesToSpawn;
     private int respingTime = 5;
     private List<GameObject> spawnedEnemies = new List<GameObject>();
     private bool doesRoundEnded = true;
+    private int respawnTime;
 
     private 
 
@@ -26,6 +31,7 @@ public class LevelLogic : MonoBehaviour
         gameLogic = FindObjectOfType<GameLogic>();
         currentWave = 1;
         SpawnEnemies(GetEnemiesToSpawn(enemiesPerWave));
+        playerHP = 25;
 
     }
 
@@ -34,19 +40,37 @@ public class LevelLogic : MonoBehaviour
     {
         if (doesRoundEnded && CheckIfAllEnemiesKilled())
         {
-            doesRoundEnded = false; // Prevent multiple triggers
-            StartNextRound();
+            if(currentWave <= maxWaves)
+            {
+                Debug.Log("Max waves reached, no more rounds will start.");
+                doesRoundEnded = false; // Prevent multiple triggers
+                StartNextRound();
+            }
+            else
+            {
+                return;
+            }
         }
 
         WinTheLevel(currentWave, maxWaves);
+        if (WinTheLevel(currentWave, maxWaves))
+        {
+            ShowWinScreen();
+        }
+
         UpdateWaveDisplay();
+        TrackPlayerHP();
+        if (playerHP <= 0 && !DeathScreen.activeSelf)
+        {
+            ShowDeathScreen();
+            Time.timeScale = 0;
+        }
     }
 
-    
 
     public int GetEnemiesToSpawn(int enemiesPerWave)
     {
-        enemiesToSpawn = enemiesPerWave + (enemiesPerWave * (currentWave-1));
+        enemiesToSpawn = enemiesPerWave + (int)(enemiesPerWave * ((currentWave - 1) / 2f));
         Debug.Log("Enemies this wave: " + enemiesToSpawn);
         return enemiesToSpawn;
     }
@@ -58,6 +82,9 @@ public class LevelLogic : MonoBehaviour
     private IEnumerator SpawnEnemiesCoroutine(int enemiesToSpawn)
     {
         int enemyHP = GetEnemyHPForWave(currentWave);
+        int respawnTime = GetRespawnTime();
+
+        float timeBetweenEnemies = (float)respawnTime / enemiesToSpawn;
 
         for (int i = 0; i < enemiesToSpawn; i++)
         {
@@ -71,8 +98,6 @@ public class LevelLogic : MonoBehaviour
             {
                 enemyScript.SetHP(enemyHP);
             }
-
-            int timeBetweenEnemies = enemiesToSpawn / respingTime;
             yield return new WaitForSeconds(timeBetweenEnemies);
         }
     }
@@ -95,10 +120,19 @@ public class LevelLogic : MonoBehaviour
 
     private void StartNextRound()
     {
-        currentWave++;
-        int enemiesThisWave = GetEnemiesToSpawn(enemiesPerWave);
-        SpawnEnemies(enemiesThisWave);
-        doesRoundEnded = true;
+        if(currentWave < maxWaves)
+        {
+            currentWave++;
+            int enemiesThisWave = GetEnemiesToSpawn(enemiesPerWave);
+            SpawnEnemies(enemiesThisWave);
+            doesRoundEnded = true;
+           
+        }
+        else
+        {
+            Debug.Log("No more rounds to start. Max waves reached.");
+            ShowWinScreen();
+        }
     }
 
     private bool WinTheLevel(int currentWave, int maxWaves)
@@ -141,5 +175,25 @@ public class LevelLogic : MonoBehaviour
         return baseHP + (hpIncreasePerWave * (wave - 1));
     }
 
+    public void EnemyTouchedTarget()
+    {
+        playerHP--;
+    }
+
+    private int TrackPlayerHP()
+    {
+        PlayerHPDisplay.text = $"Player HP: {playerHP}";
+        return playerHP;
+    }
+
+    private int GetRespawnTime()
+    {
+        respawnTime = respingTime + (1*currentWave -1);
+        return respawnTime;
+    }
+    private void ShowDeathScreen()
+    {
+        DeathScreen.SetActive(true);
+    }
 }
 
