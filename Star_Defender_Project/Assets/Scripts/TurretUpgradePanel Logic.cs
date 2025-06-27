@@ -11,6 +11,9 @@ public class TurretUpgradePanelLogic : MonoBehaviour
     public TextMeshProUGUI upgradeText;
     public TextMeshProUGUI sellText;
     public GameObject UpgradePanel;
+    public TextMeshProUGUI lvlDisplay;
+    public TextMeshProUGUI NotEnoughCredits;
+
     public bool isUpgradePanelActive = false;
 
     private GameObject detectedField;
@@ -39,7 +42,6 @@ public class TurretUpgradePanelLogic : MonoBehaviour
     }
     void Start()
     {
-
         UpgradePanel.SetActive(false);
         GetAllComponents();
 
@@ -56,68 +58,41 @@ public class TurretUpgradePanelLogic : MonoBehaviour
 
     public void Show(TurretLogic turret)
     {
-        if (spawnedPanel != null)
-        {
-            Hide();
-            return;
-        }
+        turretLogic = turret;
+        bTurretLogic = null;
         currentTower = turret.gameObject;
+        Debug.Log($"TurretLogic: {turretLogic != null}, BturretLogic: {bTurretLogic != null}");
+
         Vector3 positionToDisplay = turret.transform.position;
-        spawnedPanel = Instantiate(UpgradePanel, positionToDisplay, Quaternion.identity);
-        Debug.Log("Upgrade panel spawned at: " + positionToDisplay);
+        UpgradePanel.transform.position = positionToDisplay;
         isUpgradePanelActive = true;
-        spawnedPanel.SetActive(true);
+        UpgradePanel.SetActive(true);
 
-        TextMeshProUGUI[] texts = spawnedPanel.GetComponentsInChildren<TextMeshProUGUI>(true);
-
-        foreach (var text in texts)
-        {
-            if (text.name == "UpgradeBut")
-            {
-                text.text = $"Upgrade: ({turret.GetUgpradeCostValue()}$)";
-            }
-            else if (text.name == "SellBut")
-            {
-                text.text = $"Sell: ({turret.GetSellValue()}$)";
-            }
-        }
+        upgradeText.text = $"Upgrade: ({turret.GetUgpradeCostValue()}$)";
+        sellText.text = $"Sell: ({turret.GetSellValue()}$)";
+        lvlDisplay.text = $"Level: {turret.GetLevel()}";
     }
     public void Show(BturretLogic turret)
     {
-        if (spawnedPanel != null)
-        {
-            Hide();
-            return;
-        }
+        turretLogic = null;
+        bTurretLogic = turret;
         currentTower = turret.gameObject;
-        Vector3 positionToDisplay = turret.transform.position;
-        spawnedPanel = Instantiate(UpgradePanel, positionToDisplay, Quaternion.identity);
-        //Debug.Log("Upgrade panel spawned at: " + positionToDisplay);
+        Debug.Log($"TurretLogic: {turretLogic != null}, BturretLogic: {bTurretLogic != null}");
+
+        Vector3 positionToDisplay = currentTower.transform.position;
+        UpgradePanel.transform.position = positionToDisplay;
         isUpgradePanelActive = true;
-        spawnedPanel.SetActive(true);
+        UpgradePanel.SetActive(true);        
 
-        TextMeshProUGUI[] texts = spawnedPanel.GetComponentsInChildren<TextMeshProUGUI>(true);
-
-        foreach (var text in texts)
-        {
-            if (text.name == "UpgradeBut")
-            {
-                text.text = $"Upgrade: ({turret.GetUgpradeCostValue()}$)";
-            }
-            else if (text.name == "SellBut")
-            {
-                text.text = $"Sell: ({turret.GetSellValue()}$)";
-            }
-        }
+        upgradeText.text = $"Upgrade: ({turret.GetUgpradeCostValue()}$)";
+        sellText.text = $"Sell: ({turret.GetSellValue()}$)";
+        lvlDisplay.text = $"Level: {turret.GetLevel()}";
     }
     public void Hide()
     {
-        if (spawnedPanel != null)
+        if (UpgradePanel != null)
         {
-            spawnedPanel.SetActive(false);
-            Destroy(spawnedPanel);
-            Debug.Log("Upgrade panel destroyed.");
-            spawnedPanel = null;
+            UpgradePanel.SetActive(false);
             isUpgradePanelActive = false;
 
         }
@@ -133,6 +108,7 @@ public class TurretUpgradePanelLogic : MonoBehaviour
             bTurretLogic.Upgrade();
 
         }
+        Hide();
     }
     public void SellTower()
     {
@@ -147,4 +123,31 @@ public class TurretUpgradePanelLogic : MonoBehaviour
         }
         Hide();
     }
+    public void ShowNotEnoughCredits()
+    {
+        NotEnoughCredits.gameObject.SetActive(true);
+        NotEnoughCredits.text = "Not enough credits!";
+        StopAllCoroutines();
+        StartCoroutine(FadeOutNotEnoughCredits());
+    }
+
+    private IEnumerator FadeOutNotEnoughCredits()
+    {
+        float duration = 3f;
+        float elapsed = 0f;
+        Color originalColor = NotEnoughCredits.color;
+        NotEnoughCredits.color = new Color(originalColor.r, originalColor.g, originalColor.b, 1f);
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float alpha = Mathf.Lerp(1f, 0f, elapsed / duration);
+            NotEnoughCredits.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
+            yield return null;
+        }
+
+        NotEnoughCredits.gameObject.SetActive(false);
+        NotEnoughCredits.color = originalColor;
+    }
+    
 }
