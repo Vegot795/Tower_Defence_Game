@@ -115,6 +115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 797972934238798424}
   - component: {fileID: 4834010841898750426}
+  - component: {fileID: 5019768568955207469}
   m_Layer: 10
   m_Name: Turret
   m_TagString: Turret
@@ -152,6 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66c5e5b8d1451804ca276dc7b47355eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInPreview: 0
   turretDamage: 2
   missilePrefab: {fileID: 4707234256563468855, guid: 51b7e4bed56ae6143a426aaf3e764174, type: 3}
   range: 4
@@ -160,6 +162,28 @@ MonoBehaviour:
   missileSpeed: 30
   rotationSpeed: 10
   level: 1
+
+--- !u!135 &5019768568955207469
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5608636468454570131}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7141052499715096003
 GameObject:
   m_ObjectHideFlags: 0

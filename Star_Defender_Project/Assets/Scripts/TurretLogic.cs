@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Reflection;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class TurretLogic : MonoBehaviour
+public class TurretLogic : MonoBehaviour, ILeveler
 {
+    public bool isInPreview = false;
     public float turretDamage = 5f;
     public GameObject missilePrefab;
     public float range = 10f;
@@ -15,6 +17,7 @@ public class TurretLogic : MonoBehaviour
     public float missileSpeed = 20f;
     public float rotationSpeed = 50f;
     public int level = 1;
+    private int lvlCost = 200;
 
     private Transform targetEnemy;
     private List<GameObject> EnemiesInRange = new List<GameObject>();
@@ -24,37 +27,42 @@ public class TurretLogic : MonoBehaviour
     private int upgradeCost;
     private int currentValue;
     private bool active = true;
+    private int SellMoney;
 
     ScoreManager scoreManager;
-    private int GetUpgradeCost()
+    TurretUpgradePanelLogic upgradePanel;
+    public int GetUgpradeCostValue()
     {
-        if (level == 1)
-        {
-            upgradeCost = cost + (cost / 2);
-        }
-        else if (level < 5)
-        {
-            upgradeCost = upgradeCost + (upgradeCost / 2);
-        }
-        return upgradeCost;
+        return GetUpgradeCost();
     }
 
+    public int GetSellValue()
+    {
+        return GetSellMoney();
+    }
     private void GetAllComponents()
     {
-        scoreManager = GetComponent<ScoreManager>();
+
         currentValue = cost;
         GetUpgradeCost();
+        upgradePanel = FindObjectOfType<TurretUpgradePanelLogic>(); 
     }
 
     private void Start()
     {
         fireCountdown = 1f / fireRate;
         GetAllComponents();
+        scoreManager = FindObjectOfType<ScoreManager>();
+        if (scoreManager == null)
+        {
+            Debug.LogError("ScoreManager not found! Cannot upgrade turret.");
+            return;
+        }
     }
 
     private void Update()
     {
-        
+
         FindTarget();
 
 
@@ -67,13 +75,13 @@ public class TurretLogic : MonoBehaviour
             {
                 return;
             }
-                fireCountdown -= Time.deltaTime;
-                if (fireCountdown <= 0f)
-                {
-                    Shoot();
-                    fireCountdown = 1f / fireRate; // Reset fireCountdown
-                }
-            
+            fireCountdown -= Time.deltaTime;
+            if (fireCountdown <= 0f)
+            {
+                Shoot();
+                fireCountdown = 1f / fireRate; // Reset fireCountdown
+            }
+
         }
     }
 
@@ -102,7 +110,7 @@ public class TurretLogic : MonoBehaviour
         }
         foreach (GameObject enemy in currentEnemies)
         {
-            if(!EnemiesInRange.Contains(enemy))
+            if (!EnemiesInRange.Contains(enemy))
             {
                 EnemiesInRange.Add(enemy);
             }
@@ -118,7 +126,7 @@ public class TurretLogic : MonoBehaviour
     }
     void AimAtEnemy()
     {
-        if(targetEnemy != null)
+        if (targetEnemy != null)
         {
             Vector3 direction = (targetEnemy.position - transform.position).normalized;
             float angleZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -158,24 +166,34 @@ public class TurretLogic : MonoBehaviour
     {
         if (level < 5)
         {
-            level++;
-            turretDamage = turretDamage * 1.5f;
-            range = range*1.25f;
-            scoreManager.currency -= upgradeCost;
-            currentValue += upgradeCost;
-            Debug.Log("Tower upgraded to level " + level);
+            int upgradeCost = GetUpgradeCost(); // Store the cost BEFORE changing level
+            if (scoreManager.Currency >= upgradeCost)
+            {
+                level++;
+                turretDamage = turretDamage * 1.5f;
+                range = range * 1.25f;
+                scoreManager.AddCurrency(-upgradeCost);
+                currentValue += upgradeCost;
+                Debug.Log("Tower upgraded to level " + level);
+            }
+            else
+            {
+                Debug.Log("Not enough currency to upgrade. Required: " + upgradeCost + ", Available: " + scoreManager.Currency);
+                if (upgradePanel != null)
+                    upgradePanel.ShowNotEnoughCredits();
+            }
         }
         else
         {
             Debug.Log("Max level reached");
         }
-
     }
-   public void Sell()
+
+    public void Sell()
     {
-        afterSellCurrency = currentValue / 3;
-        Debug.Log("Tower Sold For " + afterSellCurrency);
-        scoreManager.AddCurrency(afterSellCurrency);
+        SellMoney = GetSellMoney();
+        Debug.Log("Tower Sold For " + SellMoney);
+        scoreManager.AddCurrency(SellMoney);
         Destroy(gameObject);
     }
     private void OnDrawGizmosSelected()
@@ -183,12 +201,20 @@ public class TurretLogic : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
     }
-    public void Activate()
+
+    private int GetUpgradeCost()
     {
-        active = true;
+        upgradeCost = cost + (lvlCost * level);
+        return upgradeCost;
     }
-    public void Deactivate()
+    private int GetCurrentValue()
     {
-        active = false;
+        currentValue = cost;
+        return currentValue;
+    }
+    public int GetSellMoney()
+    {
+        afterSellCurrency = currentValue / 3;
+        return afterSellCurrency;
     }
 }

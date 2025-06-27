@@ -55,6 +55,17 @@ public class ScoreManager : MonoBehaviour
     {
         Currency += currencyAmount;
     }
+    public void RemoveCurrency(int currencyAmount)
+    {
+        if (currency >= currencyAmount)
+        {
+            Currency -= currencyAmount;
+        }
+        else
+        {
+            Debug.LogWarning("Not enough currency to remove: " + currencyAmount);
+        }
+    }
     public void ShowStats()
     {
         if (ScoreLabel != null)

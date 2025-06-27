@@ -5,24 +5,48 @@ using UnityEngine;
 
 public class ObjectDetection : MonoBehaviour
 {
-    public Camera mainCamera; // Assign the main camera if not using Camera.main
-    public LayerMask interactableLayer; // Set this to the layer of objects you want to interact with
+    public Camera mainCamera;
+    public LayerMask interactableLayer;
+    public TurretUpgradePanelLogic upgradePanelLogic; // Assign in Inspector
 
     private void Start()
     {
         mainCamera = Camera.main;
-        
     }
+
     void Update()
     {
         DetectObjectUnderCursor();
+
+        // Handle turret click for upgrade panel
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, interactableLayer))
+            {
+                // Try TurretLogic
+                TurretLogic turret = hit.collider.GetComponent<TurretLogic>();
+                if (turret != null)
+                {
+                    upgradePanelLogic.Show(turret);
+                    return;
+                }
+                // Try BturretLogic
+                BturretLogic bTurret = hit.collider.GetComponent<BturretLogic>();
+                if (bTurret != null)
+                {
+                    upgradePanelLogic.Show(bTurret);
+                    return;
+                }
+            }
+        }
     }
 
     void DetectObjectUnderCursor()
     {
-        if (mainCamera != null )
+        if (mainCamera != null)
         {
-
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
@@ -37,7 +61,6 @@ public class ObjectDetection : MonoBehaviour
                     ///f(Physics.Raycast())
                     //if()
                     FindObjectOfType<ObjectPlacement>().SetSelectedCube(hitObject);
-                    //Debug.Log("Detected new Tile: " + hitObject.name);
                 }
                 else if (hitObject.CompareTag("Turret"))
                 {
@@ -48,11 +71,6 @@ public class ObjectDetection : MonoBehaviour
                 {
                     FindObjectOfType<ObjectPlacement>().SetSelectedCube(null);
                 }
-            }
-            else
-            {
-                //Debug.Log("Cursor is not hovering over any interactable object.");
-                
             }
         }
         else
