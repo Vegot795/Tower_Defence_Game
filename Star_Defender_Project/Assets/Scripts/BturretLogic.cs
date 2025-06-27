@@ -36,6 +36,7 @@ public class BturretLogic : MonoBehaviour, ILeveler
     private int SellMoney;
 
     ScoreManager scoreManager;
+    TurretUpgradePanelLogic upgradePanel;
 
     public int GetUgpradeCostValue()
     {
@@ -74,7 +75,7 @@ public class BturretLogic : MonoBehaviour, ILeveler
     
     private void GetAllComponents()
     {
-        scoreManager = GetComponent<ScoreManager>();
+
         currentValue = cost;
         GetUpgradeCost();
     }
@@ -83,6 +84,7 @@ public class BturretLogic : MonoBehaviour, ILeveler
         Physics.gravity = new Vector3(0, 0, 9.81f); // Set gravity to -Z direction
         fireCountdown = 1f / fireRate;
         GetAllComponents();
+        scoreManager = FindObjectOfType<ScoreManager>();
 
     }
     private void Update()
@@ -202,23 +204,29 @@ public class BturretLogic : MonoBehaviour, ILeveler
     {
         if (level < 5)
         {
-            if (scoreManager.currency > upgradeCost)
+            int upgradeCost = GetUpgradeCost(); // Store the cost BEFORE changing level
+            if (scoreManager.Currency >= upgradeCost)
             {
                 level++;
                 turretDamage = turretDamage * 1.5f;
                 range = range * 1.25f;
-                scoreManager.currency -= upgradeCost;
+                scoreManager.AddCurrency(-upgradeCost);
                 currentValue += upgradeCost;
-            
                 Debug.Log("Tower upgraded to level " + level);
+            }
+            else
+            {
+                Debug.Log("Not enough currency to upgrade. Required: " + upgradeCost + ", Available: " + scoreManager.Currency);
+                if (upgradePanel != null)
+                    upgradePanel.ShowNotEnoughCredits();
             }
         }
         else
         {
             Debug.Log("Max level reached");
         }
-
     }
+
     public void Sell()
     {
         SellMoney = GetSellMoney();

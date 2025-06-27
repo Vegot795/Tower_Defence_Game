@@ -3939,6 +3939,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1652417013669728564, guid: 7d2d471fc9b58564bb734c14ba951f39, type: 3}
   m_PrefabInstance: {fileID: 531049923}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &792122295 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6101879120698684881, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
+  m_PrefabInstance: {fileID: 1745502815}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &792239330 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1652417013669728564, guid: 7d2d471fc9b58564bb734c14ba951f39, type: 3}
@@ -7853,6 +7864,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d2d471fc9b58564bb734c14ba951f39, type: 3}
+--- !u!223 &1473733268 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 2048358734459890222, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
+  m_PrefabInstance: {fileID: 1745502815}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1478698566 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1652417013669728564, guid: 7d2d471fc9b58564bb734c14ba951f39, type: 3}
@@ -8751,6 +8767,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d2d471fc9b58564bb734c14ba951f39, type: 3}
+--- !u!1 &1661655212 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6965943416087101982, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
+  m_PrefabInstance: {fileID: 1745502815}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1664128589 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1652417013669728564, guid: 7d2d471fc9b58564bb734c14ba951f39, type: 3}
@@ -9411,11 +9432,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3150526896788172658, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3150526896788172658, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3150526896788172658, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9449,6 +9470,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3166383320379623182, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3585169335154285950, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
       propertyPath: m_Name
       value: sellText
@@ -9456,6 +9481,18 @@ PrefabInstance:
     - target: {fileID: 6586815810509319663, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
       propertyPath: m_text
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598858671903563635, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
+    - target: {fileID: 6598858671903563635, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598858671903563635, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6794820631257637432, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -9500,6 +9537,22 @@ PrefabInstance:
     - target: {fileID: 7979304369699025787, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8933331214066303727, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11223428}
+    - target: {fileID: 8933331214066303727, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpgradeTower
+      objectReference: {fileID: 0}
+    - target: {fileID: 8933331214066303727, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TurretUpgradePanelLogic, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8933331214066303727, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11233,6 +11286,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d2d471fc9b58564bb734c14ba951f39, type: 3}
+--- !u!114 &1989119300 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8269165048690286824, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
+  m_PrefabInstance: {fileID: 1745502815}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1994382734 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1652417013669728564, guid: 7d2d471fc9b58564bb734c14ba951f39, type: 3}
@@ -11430,6 +11494,17 @@ Transform:
   - {fileID: 1894049608}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2031271377 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6598858671903563635, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
+  m_PrefabInstance: {fileID: 1745502815}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2035174791
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13477,9 +13552,29 @@ PrefabInstance:
       value: UpgradePanelController
       objectReference: {fileID: 0}
     - target: {fileID: 2341062234741436840, guid: d365c3392a124a344921d91013503056, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1473733268}
+    - target: {fileID: 2341062234741436840, guid: d365c3392a124a344921d91013503056, type: 3}
       propertyPath: sellText
       value: 
       objectReference: {fileID: 1973133505}
+    - target: {fileID: 2341062234741436840, guid: d365c3392a124a344921d91013503056, type: 3}
+      propertyPath: lvlDisplay
+      value: 
+      objectReference: {fileID: 2031271377}
+    - target: {fileID: 2341062234741436840, guid: d365c3392a124a344921d91013503056, type: 3}
+      propertyPath: upgradeText
+      value: 
+      objectReference: {fileID: 792122295}
+    - target: {fileID: 2341062234741436840, guid: d365c3392a124a344921d91013503056, type: 3}
+      propertyPath: UpgradePanel
+      value: 
+      objectReference: {fileID: 1661655212}
+    - target: {fileID: 2341062234741436840, guid: d365c3392a124a344921d91013503056, type: 3}
+      propertyPath: NotEnoughCredits
+      value: 
+      objectReference: {fileID: 1989119300}
     - target: {fileID: 8824814280363935740, guid: d365c3392a124a344921d91013503056, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.8411851
