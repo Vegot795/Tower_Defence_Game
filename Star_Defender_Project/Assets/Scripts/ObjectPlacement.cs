@@ -7,12 +7,14 @@ public class ObjectPlacement : MonoBehaviour
     private TSManager selectionManager;
     private ObjectDetection detector;
     private GameObject currentField;
+    private ScoreManager scoreManager;
+    
 
     private void Start()
     {
-
         selectionManager = FindAnyObjectByType<TSManager>();
         detector = FindAnyObjectByType<ObjectDetection>();
+        scoreManager = FindAnyObjectByType<ScoreManager>(); // Initialize ScoreManager
 
         if (selectionManager == null)
         {
@@ -24,7 +26,12 @@ public class ObjectPlacement : MonoBehaviour
             Debug.LogError("ObjectDetection not found! Make sure it's in the scene.");
         }
 
+        if (scoreManager == null)
+        {
+            Debug.LogError("ScoreManager not found! Make sure it's in the scene.");
+        }
     }
+
     public void SetSelectedCube(GameObject hitObject)
     {
         this.currentField = hitObject;
@@ -34,12 +41,12 @@ public class ObjectPlacement : MonoBehaviour
         }
         else
         {
-            //Debug.Log("Selected tile:" + currentField.name);
+            Debug.Log($"SetSelectedCube: {currentField.name}, tag: {currentField.tag}");
         }
     }
+
     private void Update()
     {
-        Debug.Log("Update method running...");
         if (selectionManager.IsTowerSelected())
         {
             UpdatePreviewPosition();
@@ -53,54 +60,90 @@ public class ObjectPlacement : MonoBehaviour
             }
         }
     }
+
     void PlaceTower()
     {
-        //Debug.Log("Attempting to place tower...");
-
         if (currentField == null)
         {
             Debug.Log("Current field is null");
+            return;
         }
-        if (currentField != null)
+
+        GameObject turretPrefab = selectionManager.GetSelectedTower();
+        if (turretPrefab == null)
         {
-            GameObject turretPrefab = selectionManager.GetSelectedTower();
-            if (turretPrefab == null)
+            Debug.Log("No tower prefab selected");
+            return;
+        }
+
+        int cost = 0;
+        TurretLogic turretLogic = turretPrefab.GetComponent<TurretLogic>();
+        if (turretLogic != null)
+        {
+            cost = turretLogic.turretCost;
+        }
+        else
+        {
+            BturretLogic bTurretLogic = turretPrefab.GetComponent<BturretLogic>();
+            if (bTurretLogic != null)
             {
-                Debug.Log("No tower prefab selected");
+                cost = bTurretLogic.turretCost;
+            }
+        }
+
+        if (scoreManager != null && cost > 0)
+        {
+            if (scoreManager.currency < cost)
+            {
+                Debug.Log("Not enough credits to place tower.");
+                // Optionally show UI feedback here
                 return;
             }
+        }
 
-            if (currentField.CompareTag("MapTile"))
+        if (currentField.CompareTag("MapTile"))
+        {
+            Vector3 position = new Vector3(currentField.transform.position.x, currentField.transform.position.y, currentField.transform.position.z - 0.4f);
+            GameObject turret = Instantiate(turretPrefab, position, Quaternion.identity);
+
+            // Deduct cost from currency pool
+            if (scoreManager != null && cost > 0)
             {
-                Vector3 position = new Vector3(currentField.transform.position.x, currentField.transform.position.y, currentField.transform.position.z - 0.4f);
-                GameObject turret = Instantiate(turretPrefab, position, Quaternion.identity);
+                scoreManager.RemoveCurrency(cost);
+            }
 
-                TurretLogic turretLogic = turretPrefab.GetComponent<TurretLogic>();
-                if (turretLogic != null)
-                    turretLogic.isInPreview = true;
-
-                BturretLogic bTurretLogic = turretPrefab.GetComponent<BturretLogic>();
-                if (bTurretLogic != null)
-                    bTurretLogic.isInPreview = true;
-                Collider previewCollider = turretPrefab.GetComponent<Collider>();
-
-                //Debug.Log("Tower placed at:" + position);
-                currentField = null;
-                selectionManager.DeselectTower();
-
+            // Set isInPreview on the instance, not the prefab
+            TurretLogic instanceTurretLogic = turret.GetComponent<TurretLogic>();
+            if (instanceTurretLogic != null)
+            {
+                instanceTurretLogic.isInPreview = true;
             }
             else
             {
-                Debug.Log($"{currentField.name} is not available spot");
+                BturretLogic instanceBTurretLogic = turret.GetComponent<BturretLogic>();
+                if (instanceBTurretLogic != null)
+                {
+                    instanceBTurretLogic.isInPreview = true;
+                }
             }
 
+            Collider previewCollider = turret.GetComponent<Collider>();
+
+            currentField = null;
+            selectionManager.DeselectTower();
+        }
+        else
+        {
+            Debug.Log($"{currentField.name} is not available spot");
         }
     }
+
     void CancelTowerPlacement()
     {
         selectionManager.DeselectTower();
         Debug.Log("Turret placement cancelled");
     }
+
     void UpdatePreviewPosition()
     {
         if (selectionManager.IsTowerSelected() && currentField != null)
@@ -113,5 +156,4 @@ public class ObjectPlacement : MonoBehaviour
             }
         }
     }
-
 }

@@ -17,9 +17,9 @@ public class BturretLogic : MonoBehaviour, ILeveler
     public float missileSpeed = 20f;
     public float rotationSpeed = 50f;
     public int level = 1;
+    public int turretCost = 300;
 
     private float turretDamage = 10;
-    private int cost = 300;
     private int lvlCost = 200;
     //Rest
     public bool isInPreview = false;
@@ -76,7 +76,7 @@ public class BturretLogic : MonoBehaviour, ILeveler
     private void GetAllComponents()
     {
 
-        currentValue = cost;
+        currentValue = turretCost;
         GetUpgradeCost();
     }
     private void Start()
@@ -236,12 +236,12 @@ public class BturretLogic : MonoBehaviour, ILeveler
     }
     public int GetUpgradeCost()
     {
-        upgradeCost = cost + (lvlCost * level);
+        upgradeCost = turretCost + (lvlCost * level);
         return upgradeCost;
     }
     private int GetCurrentValue()
     {
-        currentValue = cost;
+        currentValue = turretCost;
         return currentValue;
     }
     public int GetSellMoney()

@@ -12,6 +12,7 @@ public class EnemyObject : MonoBehaviour, IDamager
     public float speed = 5f;
     public int scoreAmount = 30;
 
+    LevelLogic levelLogic;
     ScoreManager scoreManager;
     void Start()
     {
@@ -91,6 +92,11 @@ public class EnemyObject : MonoBehaviour, IDamager
         scoreManager = FindObjectOfType<ScoreManager>();
         scoreManager.AddScore(scoreAmount);
         scoreManager.AddCurrency(scoreAmount);
+        LevelLogic levelLogic = FindObjectOfType<LevelLogic>();
+        if (levelLogic != null)
+        {
+            levelLogic.OnEnemyKilled(this.gameObject);   
+        }
         Destroy(gameObject);
     }
 
@@ -105,5 +111,9 @@ public class EnemyObject : MonoBehaviour, IDamager
             //Debug.Log("Enemy reached the target!");
             Destroy(gameObject, 1f);
         }
+    }
+    public void SetHP(int health)
+    {
+        this.health = health;
     }
 }

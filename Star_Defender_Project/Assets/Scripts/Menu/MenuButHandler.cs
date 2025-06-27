@@ -15,6 +15,10 @@ public class MenuButHandler : MonoBehaviour
         NewGamePanel.SetActive(false);
     }
 
+    public void StartLevel()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Level 1");
+    }
     public void QuitGame()
     {
         Application.Quit(); 

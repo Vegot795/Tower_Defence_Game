@@ -17,12 +17,12 @@ public class TurretLogic : MonoBehaviour, ILeveler
     public float missileSpeed = 20f;
     public float rotationSpeed = 50f;
     public int level = 1;
-    private int lvlCost = 200;
+    public int turretCost = 300;
 
     private Transform targetEnemy;
+    private int lvlCost = 200;
     private List<GameObject> EnemiesInRange = new List<GameObject>();
     private float fireCountdown;
-    private int cost = 100;
     private int afterSellCurrency;
     private int upgradeCost;
     private int currentValue;
@@ -43,7 +43,7 @@ public class TurretLogic : MonoBehaviour, ILeveler
     private void GetAllComponents()
     {
 
-        currentValue = cost;
+        currentValue = turretCost;
         GetUpgradeCost();
         upgradePanel = FindObjectOfType<TurretUpgradePanelLogic>(); 
     }
@@ -204,17 +204,23 @@ public class TurretLogic : MonoBehaviour, ILeveler
 
     private int GetUpgradeCost()
     {
-        upgradeCost = cost + (lvlCost * level);
+        upgradeCost = turretCost + (lvlCost * level);
         return upgradeCost;
     }
     private int GetCurrentValue()
     {
-        currentValue = cost;
         return currentValue;
     }
     public int GetSellMoney()
     {
-        afterSellCurrency = currentValue / 3;
-        return afterSellCurrency;
+        // Base value is the initial cost
+        int value = turretCost;
+        // Add all upgrade costs paid so far
+        for (int i = 1; i < level; i++)
+        {
+            value += turretCost + (lvlCost * i);
+        }
+        // Sell value is 1/3 of total investment
+        return value / 3;
     }
 }
