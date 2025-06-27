@@ -467,6 +467,7 @@ GameObject:
   m_Component:
   - component: {fileID: 395113862571935287}
   - component: {fileID: 2342012100164835855}
+  - component: {fileID: -2945005533575267967}
   m_Layer: 10
   m_Name: BombTurret
   m_TagString: Turret
@@ -505,6 +506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 559d7705e8404ca4386468a390f8e5d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInPreview: 0
   turretDamage: 5
   missilePrefab: {fileID: 781082896534329042, guid: 356913416ccc11343abe7cb8f59b3234, type: 3}
   range: 4
@@ -513,6 +515,29 @@ MonoBehaviour:
   missileSpeed: 50
   rotationSpeed: 50
   level: 1
+  targetEnemy: {fileID: 0}
+  BTAmmoLogic: {fileID: 0}
+--- !u!135 &-2945005533575267967
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4882788051218485182}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5603507579585727539
 GameObject:
   m_ObjectHideFlags: 0

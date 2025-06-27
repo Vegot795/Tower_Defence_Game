@@ -67,7 +67,7 @@ public class ObjectPlacement : MonoBehaviour
     }
     void PlaceTower()
     {
-        Debug.Log("Attempting to place tower...");
+        //Debug.Log("Attempting to place tower...");
 
         if (currentField == null)
         {
@@ -86,8 +86,17 @@ public class ObjectPlacement : MonoBehaviour
             {
                 Vector3 position = new Vector3(currentField.transform.position.x, currentField.transform.position.y, currentField.transform.position.z - 0.4f);
                 GameObject turret = Instantiate(turretPrefab, position, Quaternion.identity);
-                turret.GetComponent<TurretLogic>().Activate();
-                Debug.Log("Tower placed at:" + position);
+
+                TurretLogic turretLogic = turretPrefab.GetComponent<TurretLogic>();
+                if (turretLogic != null)
+                    turretLogic.isInPreview = true;
+
+                BturretLogic bTurretLogic = turretPrefab.GetComponent<BturretLogic>();
+                if (bTurretLogic != null)
+                    bTurretLogic.isInPreview = true;
+                Collider previewCollider = turretPrefab.GetComponent<Collider>();
+
+                //Debug.Log("Tower placed at:" + position);
                 currentField = null;
                 selectionManager.DeselectTower();
 
