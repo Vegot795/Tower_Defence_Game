@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class TSManager : MonoBehaviour
 {
+
+    public ScoreManager ScoreManager;
     public GameObject BTurretLogic;
     public GameObject TurretLogic;
     public GameObject previewPrefab;
@@ -24,6 +26,10 @@ public class TSManager : MonoBehaviour
             selectedTowerPrefab = null;
         }
         BTurretLogic = Resources.Load<GameObject>("BTurretLogic");
+
+        TurretLogic = Resources.Load<GameObject>("TurretLogic");
+
+        ScoreManager = FindObjectOfType<ScoreManager>();
     }
     public void CheckCurrentField(Vector3 position)
     {
@@ -31,6 +37,24 @@ public class TSManager : MonoBehaviour
     }
     void Update()
     {
+        if (isTowerSelected && currentPreview != null)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 100f))
+            {
+                // Snap to grid center
+                Vector3 hitPos = hit.collider.transform.position;
+                currentPreview.transform.position = hitPos;
+                currentPreview.SetActive(true);
+            }
+            else
+            {
+                // Hide preview if not over a buildable cube
+                //currentPreview.transform.position = offMapPosition;
+                currentPreview.SetActive(false);
+            }
+        }
         CheckCurrentField(cursorFieldPosition);
     }
     public void SelectTower(int index)
@@ -47,7 +71,36 @@ public class TSManager : MonoBehaviour
             }
             if (index >= 0 && index < towerPrefabs.Length)
             {
-                selectedTowerPrefab = towerPrefabs[index];
+                GameObject towerPrefab = towerPrefabs[index];
+                int towerCost = 0;
+
+                // Try to get cost from TurretLogic or BturretLogic
+                TurretLogic turretLogic = towerPrefab.GetComponent<TurretLogic>();
+                if (turretLogic != null)
+                {
+                    towerCost = turretLogic.turretCost;
+                }
+                else
+                {
+                    BturretLogic bTurretLogic = towerPrefab.GetComponent<BturretLogic>();
+                    if (bTurretLogic != null)
+                    {
+                        towerCost = bTurretLogic.turretCost;
+                    }
+                }
+
+                // Get player currency (assuming ScoreManager.Instance.Money)
+                int playerMoney = ScoreManager.Currency;
+
+                if (playerMoney < towerCost)
+                {
+                    Debug.Log("Not enough money to select this tower.");
+                    
+                    DeselectTower();
+                    return;
+                }
+
+                selectedTowerPrefab = towerPrefab;
                 isTowerSelected = true;
                 Debug.Log("Tower selected:" + selectedTowerPrefab.name);
 
@@ -56,6 +109,7 @@ public class TSManager : MonoBehaviour
             }
         }
     }
+
     public void DeselectTower()
     {
         if (isTowerSelected)
@@ -132,7 +186,11 @@ public class TSManager : MonoBehaviour
     }
     private void HidePreview()
     {
-        Destroy(currentPreview);
+        if (currentPreview != null)
+        {
+            Destroy(currentPreview);
+            currentPreview = null;
+        }
     }
     private void SetPreviewMaterialTransparency(GameObject preview, float alpha)
     {

@@ -4,7 +4,6 @@ using UnityEngine.EventSystems;
 public class TurretSelector : MonoBehaviour
 {
     public TurretUpgradePanelLogic upgradePanel;
-    public GameObject turToPass;
     public GameObject CurrentTurret;
 
     
@@ -57,11 +56,5 @@ public class TurretSelector : MonoBehaviour
             upgradePanel.isUpgradePanelActive = false;
             Debug.Log("No turret clicked, hiding upgrade panel.");
         }
-    }
-
-    public GameObject GetCurrentTurret()
-    {
-        turToPass = CurrentTurret;
-        return turToPass;
     }
 }

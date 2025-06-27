@@ -67,14 +67,16 @@ public class GameLogic : MonoBehaviour
         lastWaypoint.transform.SetParent(Waypoints.transform, true);
         Waypoints_list.Add(lastWaypoint);
 
-    } 
+    }
 
-    public void SpawnEnemy()
+    public GameObject SpawnEnemy()
     {
         Vector3 spawnPos = respawnPoint.transform.position + new Vector3(0, 0, 1.6f);
-        currentEnemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
-
+        GameObject enemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+        currentEnemy = enemy;
+        return enemy;
     }
+
 
 
 }

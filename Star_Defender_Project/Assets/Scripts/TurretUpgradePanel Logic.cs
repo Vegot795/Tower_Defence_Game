@@ -26,6 +26,7 @@ public class TurretUpgradePanelLogic : MonoBehaviour
     {
         TextMeshProUGUI UpgradeBut = GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI SellBut = GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI NotEnoughCredits = GetComponent<TextMeshProUGUI>();
 
         GameObject currentTower = GetComponent<GameObject>();
 
@@ -125,29 +126,15 @@ public class TurretUpgradePanelLogic : MonoBehaviour
     }
     public void ShowNotEnoughCredits()
     {
-        NotEnoughCredits.gameObject.SetActive(true);
+        //NotEnoughCredits.gameObject.SetActive(true);
         NotEnoughCredits.text = "Not enough credits!";
-        StopAllCoroutines();
-        StartCoroutine(FadeOutNotEnoughCredits());
+        //StartCoroutine(FadeOutNotEnoughCredits());
     }
 
     private IEnumerator FadeOutNotEnoughCredits()
     {
-        float duration = 3f;
-        float elapsed = 0f;
-        Color originalColor = NotEnoughCredits.color;
-        NotEnoughCredits.color = new Color(originalColor.r, originalColor.g, originalColor.b, 1f);
-
-        while (elapsed < duration)
-        {
-            elapsed += Time.deltaTime;
-            float alpha = Mathf.Lerp(1f, 0f, elapsed / duration);
-            NotEnoughCredits.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
-            yield return null;
-        }
-
+        yield return new WaitForSeconds(2f);
         NotEnoughCredits.gameObject.SetActive(false);
-        NotEnoughCredits.color = originalColor;
     }
     
 }

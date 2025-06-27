@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInPreview: 0
-  turretDamage: 1
+  turretDamage: 2
   missilePrefab: {fileID: 4707234256563468855, guid: 51b7e4bed56ae6143a426aaf3e764174, type: 3}
   range: 2
   fireRate: 5
@@ -269,6 +269,7 @@ MonoBehaviour:
   missileSpeed: 30
   rotationSpeed: 5
   level: 1
+  turretCost: 300
 --- !u!135 &8477031967361569850
 SphereCollider:
   m_ObjectHideFlags: 0
