@@ -17,7 +17,7 @@ public class TurretLogic : MonoBehaviour, ILeveler
     public float missileSpeed = 20f;
     public float rotationSpeed = 50f;
     public int level = 1;
-    public int upgradeCostPerLevel = 200;
+    private int lvlCost = 200;
 
     private Transform targetEnemy;
     private List<GameObject> EnemiesInRange = new List<GameObject>();
@@ -204,7 +204,7 @@ public class TurretLogic : MonoBehaviour, ILeveler
 
     private int GetUpgradeCost()
     {
-        upgradeCost = cost + (upgradeCostPerLevel * level);
+        upgradeCost = cost + (lvlCost * level);
         return upgradeCost;
     }
     private int GetCurrentValue()
