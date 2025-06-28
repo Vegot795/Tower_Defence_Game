@@ -60,10 +60,12 @@ public class ObjectDetection : MonoBehaviour
                     //ray = mainCamera.ScreenPointToRay(hitObject.transform.position);
                     ///f(Physics.Raycast())
                     //if()
+                    FindObjectOfType<ObjectPlacement>().SetSelectedTurret(null);
                     FindObjectOfType<ObjectPlacement>().SetSelectedCube(hitObject);
                 }
                 else if (hitObject.CompareTag("Turret"))
                 {
+                    FindObjectOfType<ObjectPlacement>().SetSelectedCube(null);
                     FindObjectOfType<ObjectPlacement>().SetSelectedTurret(hitObject);
                     Debug.Log("Detected new Turret: " + hitObject.name);
                 }

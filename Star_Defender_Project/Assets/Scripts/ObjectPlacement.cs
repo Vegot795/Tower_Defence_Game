@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+//using System.Diagnostics;
 using UnityEngine;
 
 public class ObjectPlacement : MonoBehaviour
@@ -7,6 +8,7 @@ public class ObjectPlacement : MonoBehaviour
     private TSManager selectionManager;
     private ObjectDetection detector;
     private GameObject currentField;
+    public LayerMask turretLayer;
 
     private void Start()
     {
@@ -27,6 +29,11 @@ public class ObjectPlacement : MonoBehaviour
     }
     public void SetSelectedTurret(GameObject hitObject)
     {
+        if (hitObject == null)
+        {
+            this.currentField = null;
+            return;
+        }
         this.currentField = hitObject.transform.parent.gameObject;
         if (currentField == null)
         {
@@ -84,16 +91,24 @@ public class ObjectPlacement : MonoBehaviour
 
             if (currentField.CompareTag("MapTile"))
             {
-                Vector3 position = new Vector3(currentField.transform.position.x, currentField.transform.position.y, currentField.transform.position.z - 0.4f);
+                Ray ray = Camera.main.ScreenPointToRay(currentField.transform.position);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, turretLayer))
+                {
+                    Debug.Log($"{currentField.name} is already occupied");
+                    return;
+                }
+
+                    Vector3 position = new Vector3(currentField.transform.position.x, currentField.transform.position.y, currentField.transform.position.z - 0.4f);
                 GameObject turret = Instantiate(turretPrefab, position, Quaternion.identity);
 
                 TurretLogic turretLogic = turretPrefab.GetComponent<TurretLogic>();
                 if (turretLogic != null)
-                    turretLogic.isInPreview = true;
+                    turretLogic.isInPreview = false;
 
                 BturretLogic bTurretLogic = turretPrefab.GetComponent<BturretLogic>();
                 if (bTurretLogic != null)
-                    bTurretLogic.isInPreview = true;
+                    bTurretLogic.isInPreview = false;
                 Collider previewCollider = turretPrefab.GetComponent<Collider>();
 
                 //Debug.Log("Tower placed at:" + position);

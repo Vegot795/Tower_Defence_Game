@@ -46,12 +46,28 @@ public class BturretLogic : MonoBehaviour, ILeveler
     public int GetSellValue()
     {
         return GetSellMoney();
-    }   
+    }
+
+    private void SetGameLayerRecursive(GameObject _go, int _layer)
+    {
+        _go.layer = _layer;
+        foreach (Transform child in _go.transform)
+        {
+            child.gameObject.layer = _layer;
+
+            Transform _HasChildren = child.GetComponentInChildren<Transform>();
+            if (_HasChildren != null)
+                SetGameLayerRecursive(child.gameObject, _layer);
+
+        }
+    }
+
     private void IsInPreview(bool isInPreview)
     {
         this.isInPreview = isInPreview;
         if (isInPreview)
         {
+            SetGameLayerRecursive(gameObject, LayerMask.NameToLayer("TurretPreviews"));
             TurretLogic turretLogic = GetComponent<TurretLogic>();
             if (turretLogic != null)
                 turretLogic.enabled = false;
@@ -62,6 +78,7 @@ public class BturretLogic : MonoBehaviour, ILeveler
         }
         else
         {
+            SetGameLayerRecursive(gameObject, LayerMask.NameToLayer("Turrets"));
             TurretLogic turretLogic = GetComponent<TurretLogic>();
             if (turretLogic != null)
                 turretLogic.enabled = true;
@@ -175,7 +192,7 @@ public class BturretLogic : MonoBehaviour, ILeveler
             // PrÍdkoúÊ pionowa (w osi Z) do osiπgniÍcia h
             float vz = Mathf.Sqrt(2 * gravity * h);
 
-            // Czas w gÛrÍ i w dÛ≥
+            // Czas w gÛrÅEi w dÛ≥
             float timeUp = vz / gravity;
             float heightDifference = start.z - end.z; // UWAGA: start - end, bo Z dzia≥a odwrotnie
             float timeDown = Mathf.Sqrt(2 * Mathf.Max(0f, h + heightDifference) / gravity);

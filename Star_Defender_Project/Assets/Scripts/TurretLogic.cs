@@ -60,18 +60,40 @@ public class TurretLogic : MonoBehaviour, ILeveler
         }
     }
 
+    private void SetGameLayerRecursive(GameObject _go, int _layer)
+    {
+        _go.layer = _layer;
+        foreach (Transform child in _go.transform)
+        {
+            child.gameObject.layer = _layer;
+
+            Transform _HasChildren = child.GetComponentInChildren<Transform>();
+            if (_HasChildren != null)
+                SetGameLayerRecursive(child.gameObject, _layer);
+
+        }
+    }
+
     private void Update()
     {
 
         FindTarget();
+        if (isInPreview)
+        {
+            SetGameLayerRecursive(gameObject, LayerMask.NameToLayer("TurretPreviews"));
+        }
+        else
+        {
+            SetGameLayerRecursive(gameObject, LayerMask.NameToLayer("Turrets"));
+        }
 
 
-        if (targetEnemy != null)
+            if (targetEnemy != null)
         {
             AimAtEnemy();
 
             // Decrement fireCountdown and shoot if needed
-            if (!active)
+            if (isInPreview)
             {
                 return;
             }

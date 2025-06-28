@@ -506,15 +506,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 559d7705e8404ca4386468a390f8e5d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInPreview: 0
-  turretDamage: 5
-  missilePrefab: {fileID: 781082896534329042, guid: 356913416ccc11343abe7cb8f59b3234, type: 3}
   range: 4
   fireRate: 0.3
-  firePoint: {fileID: 2590994419819852599}
   missileSpeed: 50
   rotationSpeed: 50
   level: 1
+  isInPreview: 1
+  missilePrefab: {fileID: 781082896534329042, guid: 356913416ccc11343abe7cb8f59b3234, type: 3}
+  firePoint: {fileID: 2590994419819852599}
   targetEnemy: {fileID: 0}
   BTAmmoLogic: {fileID: 0}
 --- !u!135 &-2945005533575267967
