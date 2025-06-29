@@ -4754,6 +4754,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f098253a419f2c4b90f74a99bd1b113, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BTurretLogic: {fileID: 0}
+  TurretLogic: {fileID: 0}
   previewPrefab: {fileID: 0}
   towerPrefabs:
   - {fileID: 5608636468454570131, guid: 88c04eeb6de916843acae851dc31c1f2, type: 3}
@@ -8802,11 +8804,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 2086539263}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!222 &1674499163
+CanvasRenderer:
+  m_ObjectHideFlags: 8
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_CullTransparentMesh: 1
 --- !u!4 &1690128374 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1652417013669728564, guid: 7d2d471fc9b58564bb734c14ba951f39, type: 3}
@@ -10870,7 +10880,6 @@ MonoBehaviour:
   Waypoints: {fileID: 2027716912}
   waypoint: {fileID: 594832620165764210, guid: 0de98fdc76b288a4782eddcfb7ef92fa, type: 3}
   EnemyBucket: {fileID: 166154501}
-  currentEnemy: {fileID: 0}
   speed: 5
   Waypoints_list: []
   Enemy_list: []
@@ -10902,6 +10911,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5bdef3f1d090504799d04068607448a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turretLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!114 &1981291713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10918,6 +10930,7 @@ MonoBehaviour:
   interactableLayer:
     serializedVersion: 2
     m_Bits: 3835
+  upgradePanelLogic: {fileID: 0}
 --- !u!114 &1981291714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10949,6 +10962,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradePanel: {fileID: 629816515}
+  turToPass: {fileID: 0}
+  CurrentTurret: {fileID: 0}
 --- !u!1001 &1983689363
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12305,6 +12320,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 811014286741954972, guid: 5a5ef5cb8508aeb4b95e2a99ddf06ec5, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2342012100164835855, guid: 5a5ef5cb8508aeb4b95e2a99ddf06ec5, type: 3}
+      propertyPath: isInPreview
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4882788051218485182, guid: 5a5ef5cb8508aeb4b95e2a99ddf06ec5, type: 3}
       propertyPath: m_Name
       value: BombTurret
@@ -12974,8 +12997,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1638893986333469110, guid: eb903773f47bbf94d9344ab740c38f8f, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1638893986333469110, guid: eb903773f47bbf94d9344ab740c38f8f, type: 3}
       propertyPath: m_TagString
       value: Turret
+      objectReference: {fileID: 0}
+    - target: {fileID: 2315230011650542101, guid: eb903773f47bbf94d9344ab740c38f8f, type: 3}
+      propertyPath: isInPreview
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2315230011650542101, guid: eb903773f47bbf94d9344ab740c38f8f, type: 3}
       propertyPath: missileSpeed
