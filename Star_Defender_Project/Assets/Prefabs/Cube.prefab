@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4831152192642664804}
   - component: {fileID: 8707709992749051652}
   - component: {fileID: 4783551678981172265}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: MapTile
   m_Icon: {fileID: 0}

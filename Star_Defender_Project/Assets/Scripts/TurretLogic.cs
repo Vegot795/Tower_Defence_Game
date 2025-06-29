@@ -29,6 +29,9 @@ public class TurretLogic : MonoBehaviour, ILeveler
     private bool active = true;
     private int SellMoney;
 
+    private Collider TLCollider;
+    private Collider BTLCollider;
+
     ScoreManager scoreManager;
     TurretUpgradePanelLogic upgradePanel;
     public int GetUgpradeCostValue()

@@ -80,7 +80,7 @@ public class TurretUpgradePanelLogic : MonoBehaviour
         currentTower = turret.gameObject;
         Debug.Log($"TurretLogic: {turretLogic != null}, BturretLogic: {bTurretLogic != null}");
 
-        Vector3 positionToDisplay = currentTower.transform.position;
+        Vector3 positionToDisplay = currentTower.transform.position - new Vector3(0, 0, 1);
         UpgradePanel.transform.position = positionToDisplay;
         isUpgradePanelActive = true;
         UpgradePanel.SetActive(true);        
@@ -126,9 +126,9 @@ public class TurretUpgradePanelLogic : MonoBehaviour
     }
     public void ShowNotEnoughCredits()
     {
-        //NotEnoughCredits.gameObject.SetActive(true);
+
         NotEnoughCredits.text = "Not enough credits!";
-        //StartCoroutine(FadeOutNotEnoughCredits());
+
     }
 
     private IEnumerator FadeOutNotEnoughCredits()

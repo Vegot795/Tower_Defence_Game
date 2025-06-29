@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class TSManager : MonoBehaviour
 {
-
     public ScoreManager ScoreManager;
     public GameObject BTurretLogic;
     public GameObject TurretLogic;
@@ -43,6 +42,8 @@ public class TSManager : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100f))
             {
+                Debug.Log($"Raycast hit: {hit.collider.name}, tag: {hit.collider.tag}");
+
                 // Snap to grid center
                 Vector3 hitPos = hit.collider.transform.position;
                 currentPreview.transform.position = hitPos;
@@ -50,6 +51,7 @@ public class TSManager : MonoBehaviour
             }
             else
             {
+                Debug.Log("Raycast did not hit any collider.");
                 // Hide preview if not over a buildable cube
                 //currentPreview.transform.position = offMapPosition;
                 currentPreview.SetActive(false);
@@ -74,7 +76,7 @@ public class TSManager : MonoBehaviour
                 GameObject towerPrefab = towerPrefabs[index];
                 int towerCost = 0;
 
-                // Try to get cost from TurretLogic or BturretLogic
+
                 TurretLogic turretLogic = towerPrefab.GetComponent<TurretLogic>();
                 if (turretLogic != null)
                 {
@@ -89,7 +91,7 @@ public class TSManager : MonoBehaviour
                     }
                 }
 
-                // Get player currency (assuming ScoreManager.Instance.Money)
+
                 int playerMoney = ScoreManager.Currency;
 
                 if (playerMoney < towerCost)

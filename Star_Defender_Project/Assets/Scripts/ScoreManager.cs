@@ -9,7 +9,7 @@ public class ScoreManager : MonoBehaviour
     public TextMeshProUGUI CurrenctyLabel;
     public GameObject UpgradePanel;
 
-    public int StartCurrency = 150;
+    public int StartCurrency = 300;
     public int score = 0;
     public int currency = 0;
 

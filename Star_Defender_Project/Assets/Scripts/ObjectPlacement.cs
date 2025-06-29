@@ -47,9 +47,30 @@ public class ObjectPlacement : MonoBehaviour
     {
         if (selectionManager.IsTowerSelected())
         {
+            // Wykrywanie pola pod kursorem
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 100f))
+            {
+                if (hit.collider.CompareTag("MapTile"))
+                {
+                    SetSelectedCube(hit.collider.gameObject);
+                }
+                else
+                {
+                    SetSelectedCube(null);
+                }
+            }
+            else
+            {
+                SetSelectedCube(null);
+            }
+
             UpdatePreviewPosition();
+
             if (Input.GetMouseButtonDown(0))
             {
+                Debug.Log($"{currentField} i actual currentField");
                 PlaceTower();
             }
             if (Input.GetKeyDown(KeyCode.Escape))

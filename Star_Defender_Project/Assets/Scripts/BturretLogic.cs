@@ -35,6 +35,9 @@ public class BturretLogic : MonoBehaviour, ILeveler
     private int currentValue;
     private int SellMoney;
 
+    private Collider TLCollider;
+    private Collider BTLCollider;
+
     ScoreManager scoreManager;
     TurretUpgradePanelLogic upgradePanel;
 
@@ -55,20 +58,42 @@ public class BturretLogic : MonoBehaviour, ILeveler
             TurretLogic turretLogic = GetComponent<TurretLogic>();
             if (turretLogic != null)
                 turretLogic.enabled = false;
+                TLCollider = turretLogic.GetComponent<Collider>();
+            if(TLCollider != null)
+            {
+                TLCollider.enabled = false;
+            }
+
 
             BturretLogic bTurretLogic = GetComponent<BturretLogic>();
             if (bTurretLogic != null)
                 bTurretLogic.enabled = false;
+            BTLCollider = bTurretLogic.GetComponent<Collider>();
+            if (BTLCollider != null)
+            {
+                BTLCollider.enabled = false;
+            }
         }
         else
         {
             TurretLogic turretLogic = GetComponent<TurretLogic>();
             if (turretLogic != null)
                 turretLogic.enabled = true;
+            TLCollider = turretLogic.GetComponent<Collider>();
+            if (TLCollider != null)
+            {
+                TLCollider.enabled = true;
+            }
+
 
             BturretLogic bTurretLogic = GetComponent<BturretLogic>();
             if (bTurretLogic != null)
                 bTurretLogic.enabled = true;
+            BTLCollider = bTurretLogic.GetComponent<Collider>();
+            if (BTLCollider != null)
+            {
+                BTLCollider.enabled = true;
+            }   
         }
     }
     

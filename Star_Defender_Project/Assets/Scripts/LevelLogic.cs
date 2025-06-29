@@ -31,7 +31,7 @@ public class LevelLogic : MonoBehaviour
         gameLogic = FindObjectOfType<GameLogic>();
         currentWave = 1;
         SpawnEnemies(GetEnemiesToSpawn(enemiesPerWave));
-        playerHP = 25;
+        playerHP = 1;
 
     }
 
@@ -160,7 +160,7 @@ public class LevelLogic : MonoBehaviour
         if (WaveDisplay != null)
         {
             WaveDisplay.text = $"Wave: {currentWave}/{maxWaves}";
-            Debug.Log("WaveDisplay updated: " + WaveDisplay.text);
+           // Debug.Log("WaveDisplay updated: " + WaveDisplay.text);
         }
         else
         {

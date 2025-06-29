@@ -1009,7 +1009,6 @@ GameObject:
   m_Component:
   - component: {fileID: 152839163}
   - component: {fileID: 152839160}
-  - component: {fileID: 152839162}
   - component: {fileID: 152839161}
   m_Layer: 0
   m_Name: Camera2
@@ -1113,14 +1112,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &152839162
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 152839159}
-  m_Enabled: 1
 --- !u!4 &152839163
 Transform:
   m_ObjectHideFlags: 0
@@ -1150,7 +1141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 619600542679167137, guid: cde3aea89e8428641830aaccb7bd27cb, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2560562148896025990, guid: cde3aea89e8428641830aaccb7bd27cb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -1258,6 +1249,46 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5129595833043455707, guid: cde3aea89e8428641830aaccb7bd27cb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6409515383341003419, guid: cde3aea89e8428641830aaccb7bd27cb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8748769959156589876, guid: cde3aea89e8428641830aaccb7bd27cb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8748769959156589876, guid: cde3aea89e8428641830aaccb7bd27cb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8748769959156589876, guid: cde3aea89e8428641830aaccb7bd27cb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8748769959156589876, guid: cde3aea89e8428641830aaccb7bd27cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8748769959156589876, guid: cde3aea89e8428641830aaccb7bd27cb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8748769959156589876, guid: cde3aea89e8428641830aaccb7bd27cb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8748769959156589876, guid: cde3aea89e8428641830aaccb7bd27cb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8748769959156589876, guid: cde3aea89e8428641830aaccb7bd27cb, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8748769959156589876, guid: cde3aea89e8428641830aaccb7bd27cb, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2432,9 +2463,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 376168774}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -14}
-  m_LocalScale: {x: 0.013013926, y: 0.013013926, z: 0.013013926}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1271262559}
@@ -2444,7 +2475,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -784.5, y: -379}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &379086894 stripped
@@ -3291,7 +3322,7 @@ GameObject:
   - component: {fileID: 512301494}
   - component: {fileID: 512301493}
   m_Layer: 0
-  m_Name: MenuHandler
+  m_Name: ScoreManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3306,9 +3337,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 512301492}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3badb440bbb764742a34e860d4839208, type: 3}
+  m_Script: {fileID: 11500000, guid: e06b6952eb0eba449946201a714a3978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ScoreLabel: {fileID: 1126796018}
+  CurrenctyLabel: {fileID: 1463585383}
+  UpgradePanel: {fileID: 1745502816}
+  StartCurrency: 150
+  score: 0
+  currency: 300
 --- !u!4 &512301494
 Transform:
   m_ObjectHideFlags: 0
@@ -6151,6 +6188,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f098253a419f2c4b90f74a99bd1b113, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapTileLayer:
+    serializedVersion: 2
+    m_Bits: 0
   ScoreManager: {fileID: 0}
   BTurretLogic: {fileID: 0}
   TurretLogic: {fileID: 0}
@@ -8098,6 +8138,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0de98fdc76b288a4782eddcfb7ef92fa, type: 3}
+--- !u!1 &1203642945 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6965943416087101982, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
+  m_PrefabInstance: {fileID: 1745502815}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1204631399 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4460451723448717732, guid: 26450b10a1407bf498c2a4a90a59f91c, type: 3}
@@ -8260,7 +8305,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1212232040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11246,7 +11291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeText: {fileID: 792122295}
   sellText: {fileID: 1973133505}
-  UpgradePanel: {fileID: 1745502816}
+  UpgradePanel: {fileID: 1203642945}
   lvlDisplay: {fileID: 2031271377}
   NotEnoughCredits: {fileID: 525706450}
   isUpgradePanelActive: 0
@@ -12993,6 +13038,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2048358734459890222, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 611177884}
     - target: {fileID: 2953749370269707809, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
       propertyPath: m_Name
       value: upgradeText
@@ -13064,6 +13113,10 @@ PrefabInstance:
     - target: {fileID: 6794820631257637432, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 1574684390}
+    - target: {fileID: 6794820631257637432, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SellTower
       objectReference: {fileID: 0}
     - target: {fileID: 6965943416087101982, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
       propertyPath: m_Name
@@ -13071,44 +13124,44 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6965943416087101982, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801281556880369882, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7801281556880369882, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7801281556880369882, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7801281556880369882, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 150
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7801281556880369882, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7979304369699025787, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7979304369699025787, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7979304369699025787, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7979304369699025787, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8933331214066303727, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1574684390}
     - target: {fileID: 8933331214066303727, guid: ab01a272c78279347a28bb4d3c5fa574, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: UpgradeTower
@@ -14978,10 +15031,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ScoreLabel: {fileID: 1126796018}
   CurrenctyLabel: {fileID: 1463585383}
-  UpgradePanel: {fileID: 1745502816}
-  StartCurrency: 150
+  UpgradePanel: {fileID: 1574684389}
+  StartCurrency: 300
   score: 0
-  currency: 150
+  currency: 0
 --- !u!114 &1981291715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14994,7 +15047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00d9c4022c785364db81874eee149267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradePanel: {fileID: 0}
+  upgradePanel: {fileID: 1574684390}
   CurrentTurret: {fileID: 0}
 --- !u!114 &1981291716
 MonoBehaviour:
@@ -15010,7 +15063,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentWave: 0
   maxWaves: 20
-  playerHP: 0
+  playerHP: 25
   WinScreen: {fileID: 157597572}
   DeathScreen: {fileID: 1212232039}
   WaveDisplay: {fileID: 525706450}
@@ -15027,7 +15080,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f098253a419f2c4b90f74a99bd1b113, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScoreManager: {fileID: 0}
+  mapTileLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  ScoreManager: {fileID: 512301493}
   BTurretLogic: {fileID: 0}
   TurretLogic: {fileID: 0}
   previewPrefab: {fileID: 0}
